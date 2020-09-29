@@ -7,11 +7,11 @@
       <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
       <jdbc-url>jdbc:mysql://localhost:3307/ejemplo?serverTimezone=UTC</jdbc-url>
     </data-source>
-    <data-source source="LOCAL" name="biasecommerce@localhost" uuid="47372404-5849-40d1-a5d7-a49469e11adf">
+    <data-source source="LOCAL" name="backend_bias@localhost" uuid="47372404-5849-40d1-a5d7-a49469e11adf">
       <driver-ref>mysql.8</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mysql://localhost:3306/biasecommerce?serverTimezone=UTC</jdbc-url>
+      <jdbc-url>jdbc:mysql://localhost:3306/backend_bias?serverTimezone=UTC</jdbc-url>
     </data-source>
   </component>
 </project>
