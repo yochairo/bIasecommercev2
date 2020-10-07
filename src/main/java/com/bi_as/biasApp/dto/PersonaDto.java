@@ -3,11 +3,24 @@ package com.bi_as.biasApp.dto;
 import com.bi_as.biasApp.domain.Persona;
 
 public class PersonaDto {
+    private Integer idUser;
     private String nicknameUser;
-    private int password;
+    private String name;
+    private String secondName;
+    private String lastName;
+    private String secondLastName;
+    private String mail;
+
+    private String password;
 
     public PersonaDto(Persona persona) {
+        this.idUser=persona.getIdUser();
         this.nicknameUser = persona.getNicknameUser();
+        this.name=persona.getName();
+        this.secondName=persona.getSecondName();
+        this.lastName=persona.getLastName();
+        this.secondLastName=persona.getSecondLastName();
+        this.mail=persona.getMail();
         this.password = persona.getPassword();
     }
 
@@ -19,11 +32,59 @@ public class PersonaDto {
         this.nicknameUser = nicknameUser;
     }
 
-    public int getPassword() {
+    public String getPassword() {
         return password;
     }
 
-    public void setPassword(int password) {
+    public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getSecondName() {
+        return secondName;
+    }
+
+    public void setSecondName(String secondName) {
+        this.secondName = secondName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getSecondLastName() {
+        return secondLastName;
+    }
+
+    public void setSecondLastName(String secondLastName) {
+        this.secondLastName = secondLastName;
+    }
+
+    public String getMail() {
+        return mail;
+    }
+
+    public void setMail(String mail) {
+        this.mail = mail;
+    }
+
+    public Integer getIdUser() {
+        return idUser;
+    }
+
+    public void setIdUser(Integer idUser) {
+        this.idUser = idUser;
     }
 }

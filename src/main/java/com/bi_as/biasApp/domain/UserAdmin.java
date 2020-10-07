@@ -1,5 +1,7 @@
 package com.bi_as.biasApp.domain;
 
+
+
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Basic;
@@ -33,8 +35,8 @@ public class UserAdmin implements Serializable {
     @Basic(optional = false)
     @Column(name = "id_useradmin")
     private Integer idUseradmin;
-/*    @OneToMany(cascade = CascadeType.ALL, mappedBy = "userAdminIdUseradmin")
-    private List<Strore> stroreList;*/
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "userAdminIdUseradmin")
+    private List<Store> storeList;
     @JoinColumn(name = "persona_id_user", referencedColumnName = "id_user")
     @ManyToOne(optional = false)
     private Persona personaIdUser;
@@ -54,13 +56,13 @@ public class UserAdmin implements Serializable {
         this.idUseradmin = idUseradmin;
     }
 
-/*    public List<Strore> getStroreList() {
-        return stroreList;
+    public List<Store> getStoreList() {
+        return storeList;
     }
 
-    public void setStroreList(List<Strore> stroreList) {
-        this.stroreList = stroreList;
-    }*/
+    public void setStoreList(List<Store> storeList) {
+        this.storeList = storeList;
+    }
 
     public Persona getPersonaIdUser() {
         return personaIdUser;

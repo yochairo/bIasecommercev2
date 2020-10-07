@@ -49,7 +49,7 @@ public class AtributeService {
     public List<String> saveListOfAttribute(List<String> atributesArray){
         for(String attribute:atributesArray){
             Atribute atribute=new Atribute();
-            atribute.setData(attribute);
+            atribute.setDatos(attribute);
             atribute.setTxUser("User1");
             atribute.setTxHost("180.0.0");
             atribute.setTxDate("2019-08-07");

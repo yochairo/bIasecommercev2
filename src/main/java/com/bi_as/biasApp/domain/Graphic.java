@@ -11,8 +11,6 @@ import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -28,18 +26,17 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "graphic")
 @NamedQueries({
-    @NamedQuery(name = "Graphic.findAll", query = "SELECT g FROM Graphic g"),
-    @NamedQuery(name = "Graphic.findByIdGraphic", query = "SELECT g FROM Graphic g WHERE g.idGraphic = :idGraphic"),
-    @NamedQuery(name = "Graphic.findByName", query = "SELECT g FROM Graphic g WHERE g.name = :name"),
-    @NamedQuery(name = "Graphic.findByTxUser", query = "SELECT g FROM Graphic g WHERE g.txUser = :txUser"),
-    @NamedQuery(name = "Graphic.findByTxHost", query = "SELECT g FROM Graphic g WHERE g.txHost = :txHost"),
-    @NamedQuery(name = "Graphic.findByTxDate", query = "SELECT g FROM Graphic g WHERE g.txDate = :txDate"),
-    @NamedQuery(name = "Graphic.findByActive", query = "SELECT g FROM Graphic g WHERE g.active = :active")})
+        @NamedQuery(name = "Graphic.findAll", query = "SELECT g FROM Graphic g"),
+        @NamedQuery(name = "Graphic.findByIdGraphic", query = "SELECT g FROM Graphic g WHERE g.idGraphic = :idGraphic"),
+        @NamedQuery(name = "Graphic.findByName", query = "SELECT g FROM Graphic g WHERE g.name = :name"),
+        @NamedQuery(name = "Graphic.findByTxUser", query = "SELECT g FROM Graphic g WHERE g.txUser = :txUser"),
+        @NamedQuery(name = "Graphic.findByTxHost", query = "SELECT g FROM Graphic g WHERE g.txHost = :txHost"),
+        @NamedQuery(name = "Graphic.findByTxDate", query = "SELECT g FROM Graphic g WHERE g.txDate = :txDate"),
+        @NamedQuery(name = "Graphic.findByActive", query = "SELECT g FROM Graphic g WHERE g.active = :active")})
 public class Graphic implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "id_graphic")
     private Integer idGraphic;
@@ -58,18 +55,14 @@ public class Graphic implements Serializable {
     @Basic(optional = false)
     @Column(name = "active")
     private int active;
-/*    @OneToMany(cascade = CascadeType.ALL, mappedBy = "graphicidgraphic")
-    private List<Atribute> atributeList;
-    @JoinColumn(name = "GraphicType_id_graphictype", referencedColumnName = "id_graphictype")
-    @ManyToOne(optional = false)*/
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idGraphic")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "graphicIdGraphic")
     private List<AtributeGraphic> atributeGraphicList;
-    @JoinColumn(name = "GraphicType_id_graphictype", referencedColumnName = "id_graphictype")
+    @JoinColumn(name = "graphic_type_id_graphictype", referencedColumnName = "id_graphictype")
     @ManyToOne(optional = false)
-    private Graphictype graphicTypeidgraphictype;
-    @JoinColumn(name = "View_id_view", referencedColumnName = "id_view")
+    private GraphicType graphicTypeIdGraphictype;
+    @JoinColumn(name = "view_id_view", referencedColumnName = "id_view")
     @ManyToOne(optional = false)
-    private View viewidview;
+    private View viewIdView;
 
     public Graphic() {
     }
@@ -135,13 +128,6 @@ public class Graphic implements Serializable {
         this.active = active;
     }
 
-/*    public List<Atribute> getAtributeList() {
-        return atributeList;
-    }
-
-    public void setAtributeList(List<Atribute> atributeList) {
-        this.atributeList = atributeList;
-    }*/
     public List<AtributeGraphic> getAtributeGraphicList() {
         return atributeGraphicList;
     }
@@ -150,21 +136,20 @@ public class Graphic implements Serializable {
         this.atributeGraphicList = atributeGraphicList;
     }
 
-
-    public Graphictype getGraphicTypeidgraphictype() {
-        return graphicTypeidgraphictype;
+    public GraphicType getGraphicTypeIdGraphictype() {
+        return graphicTypeIdGraphictype;
     }
 
-    public void setGraphicTypeidgraphictype(Graphictype graphicTypeidgraphictype) {
-        this.graphicTypeidgraphictype = graphicTypeidgraphictype;
+    public void setGraphicTypeIdGraphictype(GraphicType graphicTypeIdGraphictype) {
+        this.graphicTypeIdGraphictype = graphicTypeIdGraphictype;
     }
 
-    public View getViewidview() {
-        return viewidview;
+    public View getViewIdView() {
+        return viewIdView;
     }
 
-    public void setViewidview(View viewidview) {
-        this.viewidview = viewidview;
+    public void setViewIdView(View viewIdView) {
+        this.viewIdView = viewIdView;
     }
 
     @Override
@@ -189,7 +174,7 @@ public class Graphic implements Serializable {
 
     @Override
     public String toString() {
-        return "proyectokajoy.biasgenerateentities.Graphic[ idGraphic=" + idGraphic + " ]";
+        return "proyectokajoy.biasecommerce.Graphic[ idGraphic=" + idGraphic + " ]";
     }
-    
+
 }

@@ -30,12 +30,12 @@ public class AtributeGraphic implements Serializable {
     @Basic(optional = false)
     @Column(name = "id_atribute_graphic")
     private Integer idAtributeGraphic;
-    @JoinColumn(name = "id_atribute", referencedColumnName = "id_atribute")
+    @JoinColumn(name = "atribute_id_atribute", referencedColumnName = "id_atribute")
     @ManyToOne(optional = false)
-    private Atribute idAtribute;
-    @JoinColumn(name = "id_graphic", referencedColumnName = "id_graphic")
+    private Atribute atributeIdAtribute;
+    @JoinColumn(name = "graphic_id_graphic", referencedColumnName = "id_graphic")
     @ManyToOne(optional = false)
-    private Graphic idGraphic;
+    private Graphic graphicIdGraphic;
 
     public AtributeGraphic() {
     }
@@ -52,20 +52,20 @@ public class AtributeGraphic implements Serializable {
         this.idAtributeGraphic = idAtributeGraphic;
     }
 
-    public Atribute getIdAtribute() {
-        return idAtribute;
+    public Atribute getAtributeIdAtribute() {
+        return atributeIdAtribute;
     }
 
-    public void setIdAtribute(Atribute idAtribute) {
-        this.idAtribute = idAtribute;
+    public void setAtributeIdAtribute(Atribute atributeIdAtribute) {
+        this.atributeIdAtribute = atributeIdAtribute;
     }
 
-    public Graphic getIdGraphic() {
-        return idGraphic;
+    public Graphic getGraphicIdGraphic() {
+        return graphicIdGraphic;
     }
 
-    public void setIdGraphic(Graphic idGraphic) {
-        this.idGraphic = idGraphic;
+    public void setGraphicIdGraphic(Graphic graphicIdGraphic) {
+        this.graphicIdGraphic = graphicIdGraphic;
     }
 
     @Override
@@ -90,7 +90,7 @@ public class AtributeGraphic implements Serializable {
 
     @Override
     public String toString() {
-        return "proyectokajoy.biascorregido.AtributeGraphic[ idAtributeGraphic=" + idAtributeGraphic + " ]";
+        return "proyectokajoy.biasecommerce.AtributeGraphic[ idAtributeGraphic=" + idAtributeGraphic + " ]";
     }
 
 }

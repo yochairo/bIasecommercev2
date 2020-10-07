@@ -15,7 +15,7 @@ public class DashboardDto {
     private List<ViewDto> viewList;
 
     public DashboardDto(Dashboard dashboard) {
-        this.idDashboard=dashboard.getIdDashboard();
+        this.idDashboard=dashboard.getIdDashboar();
         this.name=dashboard.getName();
         this.txUser=dashboard.getTxUser();
         this.txHost=dashboard.getTxHost();

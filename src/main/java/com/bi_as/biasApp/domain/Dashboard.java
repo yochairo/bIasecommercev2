@@ -27,22 +27,22 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "dashboard")
-//@NamedQueries({
-//    @NamedQuery(name = "Dashboard.findAll", query = "SELECT d FROM Dashboard d"),
-//    @NamedQuery(name = "Dashboard.findByIdDashboard", query = "SELECT d FROM Dashboard d WHERE d.idDashboard = :idDashboard"),
-//    @NamedQuery(name = "Dashboard.findByName", query = "SELECT d FROM Dashboard d WHERE d.name = :name"),
-//    @NamedQuery(name = "Dashboard.findByTxUser", query = "SELECT d FROM Dashboard d WHERE d.txUser = :txUser"),
-//    @NamedQuery(name = "Dashboard.findByTxHost", query = "SELECT d FROM Dashboard d WHERE d.txHost = :txHost"),
-//    @NamedQuery(name = "Dashboard.findByTxDate", query = "SELECT d FROM Dashboard d WHERE d.txDate = :txDate"),
-//    @NamedQuery(name = "Dashboard.findByActive", query = "SELECT d FROM Dashboard d WHERE d.active = :active")})
+@NamedQueries({
+        @NamedQuery(name = "Dashboard.findAll", query = "SELECT d FROM Dashboard d"),
+        @NamedQuery(name = "Dashboard.findByIdDashboar", query = "SELECT d FROM Dashboard d WHERE d.idDashboar = :idDashboar"),
+        @NamedQuery(name = "Dashboard.findByName", query = "SELECT d FROM Dashboard d WHERE d.name = :name"),
+        @NamedQuery(name = "Dashboard.findByTxUser", query = "SELECT d FROM Dashboard d WHERE d.txUser = :txUser"),
+        @NamedQuery(name = "Dashboard.findByTxHost", query = "SELECT d FROM Dashboard d WHERE d.txHost = :txHost"),
+        @NamedQuery(name = "Dashboard.findByTxDate", query = "SELECT d FROM Dashboard d WHERE d.txDate = :txDate"),
+        @NamedQuery(name = "Dashboard.findByActive", query = "SELECT d FROM Dashboard d WHERE d.active = :active")})
 public class Dashboard implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "id_dashboard")
-    private Integer idDashboard;
+    @Column(name = "id_dashboar")
+    private Integer idDashboar;
     @Basic(optional = false)
     @Column(name = "name")
     private String name;
@@ -58,21 +58,21 @@ public class Dashboard implements Serializable {
     @Basic(optional = false)
     @Column(name = "active")
     private int active;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "dashboardiddashboard")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "dashboardIdDashboar")
     private List<View> viewList;
     @JoinColumn(name = "user_id_user", referencedColumnName = "id_user")
     @ManyToOne(optional = false)
-    private User userIdUser;
+    private Persona userIdUser;
 
     public Dashboard() {
     }
 
-    public Dashboard(Integer idDashboard) {
-        this.idDashboard = idDashboard;
+    public Dashboard(Integer idDashboar) {
+        this.idDashboar = idDashboar;
     }
 
-    public Dashboard(Integer idDashboard, String name, String txUser, String txHost, String txDate, int active) {
-        this.idDashboard = idDashboard;
+    public Dashboard(Integer idDashboar, String name, String txUser, String txHost, String txDate, int active) {
+        this.idDashboar = idDashboar;
         this.name = name;
         this.txUser = txUser;
         this.txHost = txHost;
@@ -80,12 +80,12 @@ public class Dashboard implements Serializable {
         this.active = active;
     }
 
-    public Integer getIdDashboard() {
-        return idDashboard;
+    public Integer getIdDashboar() {
+        return idDashboar;
     }
 
-    public void setIdDashboard(Integer idDashboard) {
-        this.idDashboard = idDashboard;
+    public void setIdDashboar(Integer idDashboar) {
+        this.idDashboar = idDashboar;
     }
 
     public String getName() {
@@ -136,18 +136,18 @@ public class Dashboard implements Serializable {
         this.viewList = viewList;
     }
 
-    public User getUserIdUser() {
+    public Persona getUserIdUser() {
         return userIdUser;
     }
 
-    public void setUserIdUser(User userIdUser) {
+    public void setUserIdUser(Persona userIdUser) {
         this.userIdUser = userIdUser;
     }
 
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (idDashboard != null ? idDashboard.hashCode() : 0);
+        hash += (idDashboar != null ? idDashboar.hashCode() : 0);
         return hash;
     }
 
@@ -158,7 +158,7 @@ public class Dashboard implements Serializable {
             return false;
         }
         Dashboard other = (Dashboard) object;
-        if ((this.idDashboard == null && other.idDashboard != null) || (this.idDashboard != null && !this.idDashboard.equals(other.idDashboard))) {
+        if ((this.idDashboar == null && other.idDashboar != null) || (this.idDashboar != null && !this.idDashboar.equals(other.idDashboar))) {
             return false;
         }
         return true;
@@ -166,7 +166,7 @@ public class Dashboard implements Serializable {
 
     @Override
     public String toString() {
-        return "proyectokajoy.biasgenerateentities.Dashboard[ idDashboard=" + idDashboard + " ]";
+        return "proyectokajoy.biasecommerce.Dashboard[ idDashboar=" + idDashboar + " ]";
     }
-    
+
 }

@@ -12,7 +12,7 @@ public class AtributeDto {
 
     public AtributeDto(Atribute atribute) {
         this.idAttribute=atribute.getIdAtribute();
-        this.data=atribute.getData();
+        this.data=atribute.getDatos();
         this.txUser=atribute.getTxUser();
         this.txHost=atribute.getTxHost();
         this.txDate=atribute.getTxDate();

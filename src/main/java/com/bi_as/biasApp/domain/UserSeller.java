@@ -36,11 +36,11 @@ public class UserSeller implements Serializable {
     @JoinColumn(name = "persona_id_user", referencedColumnName = "id_user")
     @ManyToOne(optional = false)
     private Persona personaIdUser;
-/*    @JoinColumn(name = "strore_id_store", referencedColumnName = "id_store")
+    @JoinColumn(name = "strore_id_store", referencedColumnName = "id_store")
     @ManyToOne(optional = false)
-    private Strore stroreIdStore;
+    private Store stroreIdStore;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "userSellerIdUserseller")
-    private List<PermissionUserSeller> permissionUserSellerList;*/
+    private List<PermissionUserSeller> permissionUserSellerList;
 
     public UserSeller() {
     }
@@ -64,12 +64,12 @@ public class UserSeller implements Serializable {
     public void setPersonaIdUser(Persona personaIdUser) {
         this.personaIdUser = personaIdUser;
     }
-/*
-    public Strore getStroreIdStore() {
+
+    public Store getStroreIdStore() {
         return stroreIdStore;
     }
 
-    public void setStroreIdStore(Strore stroreIdStore) {
+    public void setStroreIdStore(Store stroreIdStore) {
         this.stroreIdStore = stroreIdStore;
     }
 
@@ -79,7 +79,7 @@ public class UserSeller implements Serializable {
 
     public void setPermissionUserSellerList(List<PermissionUserSeller> permissionUserSellerList) {
         this.permissionUserSellerList = permissionUserSellerList;
-    }*/
+    }
 
     @Override
     public int hashCode() {

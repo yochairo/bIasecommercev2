@@ -28,13 +28,13 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "view")
 @NamedQueries({
-    @NamedQuery(name = "View.findAll", query = "SELECT v FROM View v"),
-    @NamedQuery(name = "View.findByIdView", query = "SELECT v FROM View v WHERE v.idView = :idView"),
-    @NamedQuery(name = "View.findByName", query = "SELECT v FROM View v WHERE v.name = :name"),
-    @NamedQuery(name = "View.findByTxUser", query = "SELECT v FROM View v WHERE v.txUser = :txUser"),
-    @NamedQuery(name = "View.findByTxHost", query = "SELECT v FROM View v WHERE v.txHost = :txHost"),
-    @NamedQuery(name = "View.findByTxDate", query = "SELECT v FROM View v WHERE v.txDate = :txDate"),
-    @NamedQuery(name = "View.findByActive", query = "SELECT v FROM View v WHERE v.active = :active")})
+        @NamedQuery(name = "View.findAll", query = "SELECT v FROM View v"),
+        @NamedQuery(name = "View.findByIdView", query = "SELECT v FROM View v WHERE v.idView = :idView"),
+        @NamedQuery(name = "View.findByName", query = "SELECT v FROM View v WHERE v.name = :name"),
+        @NamedQuery(name = "View.findByTxUser", query = "SELECT v FROM View v WHERE v.txUser = :txUser"),
+        @NamedQuery(name = "View.findByTxHost", query = "SELECT v FROM View v WHERE v.txHost = :txHost"),
+        @NamedQuery(name = "View.findByTxDate", query = "SELECT v FROM View v WHERE v.txDate = :txDate"),
+        @NamedQuery(name = "View.findByActive", query = "SELECT v FROM View v WHERE v.active = :active")})
 public class View implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -58,10 +58,10 @@ public class View implements Serializable {
     @Basic(optional = false)
     @Column(name = "active")
     private int active;
-    @JoinColumn(name = "Dashboard_id_dashboard", referencedColumnName = "id_dashboard")
+    @JoinColumn(name = "dashboard_id_dashboar", referencedColumnName = "id_dashboar")
     @ManyToOne(optional = false)
-    private Dashboard dashboardiddashboard;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "viewidview")
+    private Dashboard dashboardIdDashboar;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "viewIdView")
     private List<Graphic> graphicList;
 
     public View() {
@@ -128,12 +128,12 @@ public class View implements Serializable {
         this.active = active;
     }
 
-    public Dashboard getDashboardiddashboard() {
-        return dashboardiddashboard;
+    public Dashboard getDashboardIdDashboar() {
+        return dashboardIdDashboar;
     }
 
-    public void setDashboardiddashboard(Dashboard dashboardiddashboard) {
-        this.dashboardiddashboard = dashboardiddashboard;
+    public void setDashboardIdDashboar(Dashboard dashboardIdDashboar) {
+        this.dashboardIdDashboar = dashboardIdDashboar;
     }
 
     public List<Graphic> getGraphicList() {
@@ -166,10 +166,7 @@ public class View implements Serializable {
 
     @Override
     public String toString() {
-        return "Vista:{" +
-                "idVista="+idView+
-                "Nombre="+name+"" +
-                "}";
+        return "proyectokajoy.biasecommerce.View[ idView=" + idView + " ]";
     }
-    
+
 }

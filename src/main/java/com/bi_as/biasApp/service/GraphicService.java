@@ -40,15 +40,15 @@ public class GraphicService {
 
     public Graphic addView(GraphicDto graphicDto) {
         View view=viewService.getViewByidView(graphicDto.getIdView());
-        Graphictype graphictype=graphicTypeService.getGraphicTypeByIdGraphicType(graphicDto.getIdTypeGraphic());
+        GraphicType graphictype=graphicTypeService.getGraphicTypeByIdGraphicType(graphicDto.getIdTypeGraphic());
         Graphic graphic=new Graphic();
         graphic.setName(graphicDto.getName());
         graphic.setActive(graphicDto.getActive());
         graphic.setTxDate(graphicDto.getTxDate());
         graphic.setTxHost(graphicDto.getTxHost());
         graphic.setTxUser(graphicDto.getTxUser());
-        graphic.setViewidview(view);
-        graphic.setGraphicTypeidgraphictype(graphictype);
+//        graphic.setViewidview(view);
+//        graphic.setGraphicTypeidgraphictype(graphictype);
         graphicRepository.save(graphic);
         return graphic;
     }

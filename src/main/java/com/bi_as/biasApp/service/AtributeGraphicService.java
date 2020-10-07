@@ -29,8 +29,8 @@ public class AtributeGraphicService {
         Graphic graphic=graphicService.getGraphicByidGraphic(idGraphic);
         Atribute atribute=atributeService.getAtributeByIdAtribute(idAtribute);
         AtributeGraphic atributeGraphic=new AtributeGraphic();
-        atributeGraphic.setIdGraphic(graphic);
-        atributeGraphic.setIdAtribute(atribute);
+        atributeGraphic.setGraphicIdGraphic(graphic);
+        atributeGraphic.setAtributeIdAtribute(atribute);
         atributeGraphicRepository.save(atributeGraphic);
     }
 
@@ -40,7 +40,7 @@ public class AtributeGraphicService {
         List<AtributeGraphic> atributeGraphicList=graphic.getAtributeGraphicList();
         List<Atribute> atributeList=new ArrayList<>();
         for(AtributeGraphic atributeGraphic:atributeGraphicList){
-            atributeList.add(atributeGraphic.getIdAtribute());
+            atributeList.add(atributeGraphic.getAtributeIdAtribute());
         }
         return atributeList;
     }
@@ -49,7 +49,7 @@ public class AtributeGraphicService {
         List<Atribute> atributeList=getAtributeListByIdGraphic(idGraphic);
         List<GraphicColumnsDto> graphicColumnsDtoList=new ArrayList<>();
         for(Atribute atribute:atributeList){
-            String[] arrayString=atribute.getData().split(",");
+            String[] arrayString=atribute.getDatos().split(",");
             graphicColumnsDtoList.add(new GraphicColumnsDto(arrayString[0],Integer.parseInt(arrayString[3])));
         }
         return graphicColumnsDtoList;

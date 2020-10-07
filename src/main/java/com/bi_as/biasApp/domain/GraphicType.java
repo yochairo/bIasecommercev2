@@ -11,8 +11,6 @@ import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -24,37 +22,36 @@ import javax.persistence.Table;
  * @author ASUS
  */
 @Entity
-@Table(name = "graphictype")
+@Table(name = "graphic_type")
 @NamedQueries({
-    @NamedQuery(name = "Graphictype.findAll", query = "SELECT g FROM Graphictype g"),
-    @NamedQuery(name = "Graphictype.findByIdGraphictype", query = "SELECT g FROM Graphictype g WHERE g.idGraphictype = :idGraphictype"),
-    @NamedQuery(name = "Graphictype.findByName", query = "SELECT g FROM Graphictype g WHERE g.name = :name"),
-    @NamedQuery(name = "Graphictype.findByActive", query = "SELECT g FROM Graphictype g WHERE g.active = :active")})
-public class Graphictype implements Serializable {
+        @NamedQuery(name = "GraphicType.findAll", query = "SELECT g FROM GraphicType g"),
+        @NamedQuery(name = "GraphicType.findByIdGraphictype", query = "SELECT g FROM GraphicType g WHERE g.idGraphictype = :idGraphictype"),
+        @NamedQuery(name = "GraphicType.findByName", query = "SELECT g FROM GraphicType g WHERE g.name = :name"),
+        @NamedQuery(name = "GraphicType.findByActive", query = "SELECT g FROM GraphicType g WHERE g.active = :active")})
+public class GraphicType implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "id_graphictype")
     private Integer idGraphictype;
     @Basic(optional = false)
     @Column(name = "name")
-    private String name;
+    private int name;
     @Basic(optional = false)
     @Column(name = "active")
     private int active;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "graphicTypeidgraphictype")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "graphicTypeIdGraphictype")
     private List<Graphic> graphicList;
 
-    public Graphictype() {
+    public GraphicType() {
     }
 
-    public Graphictype(Integer idGraphictype) {
+    public GraphicType(Integer idGraphictype) {
         this.idGraphictype = idGraphictype;
     }
 
-    public Graphictype(Integer idGraphictype, String name, int active) {
+    public GraphicType(Integer idGraphictype, int name, int active) {
         this.idGraphictype = idGraphictype;
         this.name = name;
         this.active = active;
@@ -68,11 +65,11 @@ public class Graphictype implements Serializable {
         this.idGraphictype = idGraphictype;
     }
 
-    public String getName() {
+    public int getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(int name) {
         this.name = name;
     }
 
@@ -102,10 +99,10 @@ public class Graphictype implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Graphictype)) {
+        if (!(object instanceof GraphicType)) {
             return false;
         }
-        Graphictype other = (Graphictype) object;
+        GraphicType other = (GraphicType) object;
         if ((this.idGraphictype == null && other.idGraphictype != null) || (this.idGraphictype != null && !this.idGraphictype.equals(other.idGraphictype))) {
             return false;
         }
@@ -114,7 +111,7 @@ public class Graphictype implements Serializable {
 
     @Override
     public String toString() {
-        return "proyectokajoy.biasgenerateentities.Graphictype[ idGraphictype=" + idGraphictype + " ]";
+        return "proyectokajoy.biasecommerce.GraphicType[ idGraphictype=" + idGraphictype + " ]";
     }
-    
+
 }

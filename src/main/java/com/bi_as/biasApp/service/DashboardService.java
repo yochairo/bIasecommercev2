@@ -2,6 +2,7 @@ package com.bi_as.biasApp.service;
 
 import com.bi_as.biasApp.dao.DashboardRepository;
 import com.bi_as.biasApp.domain.Dashboard;
+import com.bi_as.biasApp.domain.Persona;
 import com.bi_as.biasApp.domain.User;
 import com.bi_as.biasApp.dto.DashboardDto;
 import com.bi_as.biasApp.dto.UserDto;
@@ -31,14 +32,14 @@ public class DashboardService {
     }
 
     public Dashboard addDashboard(DashboardDto dashboardDto) {
-        User user=userService.getUserByid(dashboardDto.getIdUser());
+     //   Persona user=userService.getUserByid(dashboardDto.getIdUser());
         Dashboard dashboard=new Dashboard();
-        dashboard.setIdDashboard(dashboardDto.getIdDashboard());
+        dashboard.setIdDashboar(dashboardDto.getIdDashboard());
         dashboard.setName(dashboardDto.getName());
         dashboard.setTxUser(dashboardDto.getTxUser());
         dashboard.setTxHost(dashboardDto.getTxHost());
         dashboard.setTxDate(dashboardDto.getTxDate());
-        dashboard.setUserIdUser(user);
+//        dashboard.setUserIdUser(user);
         dashboardRepository.save(dashboard);
         return dashboard;
     }

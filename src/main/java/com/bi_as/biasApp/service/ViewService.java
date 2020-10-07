@@ -31,7 +31,7 @@ public class ViewService {
         return viewDtoList;
     }
 
-
+/*
     public View addView(ViewDto viewDto){
         View view=new View();
         Dashboard dashboard=dashboardService.getDashboardByIdDashboard(viewDto.getIdDashboard());
@@ -46,7 +46,7 @@ public class ViewService {
         viewRepository.save(view);
         return view;
     }
-
+*/
     public View getViewByidView(int idView){
 //        View view= viewRepository.findByName("MiVista1c");
         View view= viewRepository.findByIdView(idView);

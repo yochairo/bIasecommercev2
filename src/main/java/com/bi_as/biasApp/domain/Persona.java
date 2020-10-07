@@ -1,12 +1,5 @@
 package com.bi_as.biasApp.domain;
 
-import javax.persistence.Basic;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.OneToMany;
-import java.io.Serializable;
-import java.util.List;
-
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Basic;
@@ -28,15 +21,15 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "persona")
 /*@NamedQueries({
-    @NamedQuery(name = "Persona.findAll", query = "SELECT p FROM Persona p"),
-    @NamedQuery(name = "Persona.findByIdUser", query = "SELECT p FROM Persona p WHERE p.idUser = :idUser"),
-    @NamedQuery(name = "Persona.findByNicknameUser", query = "SELECT p FROM Persona p WHERE p.nicknameUser = :nicknameUser"),
-    @NamedQuery(name = "Persona.findByName", query = "SELECT p FROM Persona p WHERE p.name = :name"),
-    @NamedQuery(name = "Persona.findBySecondName", query = "SELECT p FROM Persona p WHERE p.secondName = :secondName"),
-    @NamedQuery(name = "Persona.findByLastName", query = "SELECT p FROM Persona p WHERE p.lastName = :lastName"),
-    @NamedQuery(name = "Persona.findBySecondLastName", query = "SELECT p FROM Persona p WHERE p.secondLastName = :secondLastName"),
-    @NamedQuery(name = "Persona.findByMail", query = "SELECT p FROM Persona p WHERE p.mail = :mail"),
-    @NamedQuery(name = "Persona.findByPassword", query = "SELECT p FROM Persona p WHERE p.password = :password")})*/
+        @NamedQuery(name = "Persona.findAll", query = "SELECT p FROM Persona p"),
+        @NamedQuery(name = "Persona.findByIdUser", query = "SELECT p FROM Persona p WHERE p.idUser = :idUser"),
+        @NamedQuery(name = "Persona.findByNicknameUser", query = "SELECT p FROM Persona p WHERE p.nicknameUser = :nicknameUser"),
+        @NamedQuery(name = "Persona.findByName", query = "SELECT p FROM Persona p WHERE p.name = :name"),
+        @NamedQuery(name = "Persona.findBySecondName", query = "SELECT p FROM Persona p WHERE p.secondName = :secondName"),
+        @NamedQuery(name = "Persona.findByLastName", query = "SELECT p FROM Persona p WHERE p.lastName = :lastName"),
+        @NamedQuery(name = "Persona.findBySecondLastName", query = "SELECT p FROM Persona p WHERE p.secondLastName = :secondLastName"),
+        @NamedQuery(name = "Persona.findByMail", query = "SELECT p FROM Persona p WHERE p.mail = :mail"),
+        @NamedQuery(name = "Persona.findByPassword", query = "SELECT p FROM Persona p WHERE p.password = :password")})*/
 public class Persona implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -65,15 +58,15 @@ public class Persona implements Serializable {
     private String mail;
     @Basic(optional = false)
     @Column(name = "password")
-    private int password;
-/*    @OneToMany(cascade = CascadeType.ALL, mappedBy = "personaIdUser")
+    private String password;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "personaIdUser")
     private List<UserSeller> userSellerList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "personaIdUser")
     private List<UserClient> userClientList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "personaIdUser")
     private List<UserAdmin> userAdminList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "userIdUser")
-    private List<Dashboard> dashboardList;*/
+    private List<Dashboard> dashboardList;
 
     public Persona() {
     }
@@ -82,7 +75,7 @@ public class Persona implements Serializable {
         this.idUser = idUser;
     }
 
-    public Persona(Integer idUser, String nicknameUser, String name, String secondName, String lastName, String secondLastName, String mail, int password) {
+    public Persona(Integer idUser, String nicknameUser, String name, String secondName, String lastName, String secondLastName, String mail, String password) {
         this.idUser = idUser;
         this.nicknameUser = nicknameUser;
         this.name = name;
@@ -149,14 +142,14 @@ public class Persona implements Serializable {
         this.mail = mail;
     }
 
-    public int getPassword() {
+    public String getPassword() {
         return password;
     }
 
-    public void setPassword(int password) {
+    public void setPassword(String password) {
         this.password = password;
     }
-/*
+
     public List<UserSeller> getUserSellerList() {
         return userSellerList;
     }
@@ -188,7 +181,7 @@ public class Persona implements Serializable {
     public void setDashboardList(List<Dashboard> dashboardList) {
         this.dashboardList = dashboardList;
     }
-*/
+
     @Override
     public int hashCode() {
         int hash = 0;

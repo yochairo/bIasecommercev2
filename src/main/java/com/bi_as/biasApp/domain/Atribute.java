@@ -7,7 +7,17 @@ package com.bi_as.biasApp.domain;
 
 import java.io.Serializable;
 import java.util.List;
-import javax.persistence.*;
+import javax.persistence.Basic;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 /**
  *
@@ -15,15 +25,15 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name = "atribute")
-/*@NamedQueries({
+@NamedQueries({
         @NamedQuery(name = "Atribute.findAll", query = "SELECT a FROM Atribute a"),
         @NamedQuery(name = "Atribute.findByIdAtribute", query = "SELECT a FROM Atribute a WHERE a.idAtribute = :idAtribute"),
-        @NamedQuery(name = "Atribute.findByData", query = "SELECT a FROM Atribute a WHERE a.data = :data"),
+        @NamedQuery(name = "Atribute.findByDatos", query = "SELECT a FROM Atribute a WHERE a.datos = :datos"),
         @NamedQuery(name = "Atribute.findByTxUser", query = "SELECT a FROM Atribute a WHERE a.txUser = :txUser"),
         @NamedQuery(name = "Atribute.findByTxHost", query = "SELECT a FROM Atribute a WHERE a.txHost = :txHost"),
         @NamedQuery(name = "Atribute.findByTxDate", query = "SELECT a FROM Atribute a WHERE a.txDate = :txDate"),
         @NamedQuery(name = "Atribute.findByActive", query = "SELECT a FROM Atribute a WHERE a.active = :active")})
-*/public class Atribute implements Serializable {
+public class Atribute implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -31,8 +41,9 @@ import javax.persistence.*;
     @Basic(optional = false)
     @Column(name = "id_atribute")
     private Integer idAtribute;
-    @Column(name = "data")
-    private String data;
+    @Basic(optional = false)
+    @Column(name = "datos")
+    private String datos;
     @Basic(optional = false)
     @Column(name = "tx_user")
     private String txUser;
@@ -45,7 +56,7 @@ import javax.persistence.*;
     @Basic(optional = false)
     @Column(name = "active")
     private int active;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idAtribute")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "atributeIdAtribute")
     private List<AtributeGraphic> atributeGraphicList;
 
     public Atribute() {
@@ -55,8 +66,9 @@ import javax.persistence.*;
         this.idAtribute = idAtribute;
     }
 
-    public Atribute(Integer idAtribute, String txUser, String txHost, String txDate, int active) {
+    public Atribute(Integer idAtribute, String datos, String txUser, String txHost, String txDate, int active) {
         this.idAtribute = idAtribute;
+        this.datos = datos;
         this.txUser = txUser;
         this.txHost = txHost;
         this.txDate = txDate;
@@ -71,12 +83,12 @@ import javax.persistence.*;
         this.idAtribute = idAtribute;
     }
 
-    public String getData() {
-        return data;
+    public String getDatos() {
+        return datos;
     }
 
-    public void setData(String data) {
-        this.data = data;
+    public void setDatos(String datos) {
+        this.datos = datos;
     }
 
     public String getTxUser() {
@@ -111,6 +123,14 @@ import javax.persistence.*;
         this.active = active;
     }
 
+    public List<AtributeGraphic> getAtributeGraphicList() {
+        return atributeGraphicList;
+    }
+
+    public void setAtributeGraphicList(List<AtributeGraphic> atributeGraphicList) {
+        this.atributeGraphicList = atributeGraphicList;
+    }
+
     @Override
     public int hashCode() {
         int hash = 0;
@@ -131,17 +151,9 @@ import javax.persistence.*;
         return true;
     }
 
-    public List<AtributeGraphic> getAtributeGraphicList() {
-        return atributeGraphicList;
-    }
-
-    public void setAtributeGraphicList(List<AtributeGraphic> atributeGraphicList) {
-        this.atributeGraphicList = atributeGraphicList;
-    }
-
     @Override
     public String toString() {
-        return "proyectokajoy.biascorregido.Atribute[ idAtribute=" + idAtribute + " ]";
+        return "proyectokajoy.biasecommerce.Atribute[ idAtribute=" + idAtribute + " ]";
     }
 
 }

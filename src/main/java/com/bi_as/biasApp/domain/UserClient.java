@@ -33,16 +33,14 @@ public class UserClient implements Serializable {
     @Basic(optional = false)
     @Column(name = "id_userclient")
     private Integer idUserclient;
-/*    @OneToMany(cascade = CascadeType.ALL, mappedBy = "userClientIdUserclient")
-    private List<Compra> compraList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "userClientIdUserclient")
-    private List<Userclientproduct> userclientproductList;*/
+    private List<Compra> compraList;
     @JoinColumn(name = "persona_id_user", referencedColumnName = "id_user")
     @ManyToOne(optional = false)
     private Persona personaIdUser;
-/*    @JoinColumn(name = "strore_id_store", referencedColumnName = "id_store")
+    @JoinColumn(name = "strore_id_store", referencedColumnName = "id_store")
     @ManyToOne(optional = false)
-    private Strore stroreIdStore;*/
+    private Store stroreIdStore;
 
     public UserClient() {
     }
@@ -58,7 +56,7 @@ public class UserClient implements Serializable {
     public void setIdUserclient(Integer idUserclient) {
         this.idUserclient = idUserclient;
     }
-/*
+
     public List<Compra> getCompraList() {
         return compraList;
     }
@@ -67,14 +65,6 @@ public class UserClient implements Serializable {
         this.compraList = compraList;
     }
 
-    public List<Userclientproduct> getUserclientproductList() {
-        return userclientproductList;
-    }
-
-    public void setUserclientproductList(List<Userclientproduct> userclientproductList) {
-        this.userclientproductList = userclientproductList;
-    }
-*/
     public Persona getPersonaIdUser() {
         return personaIdUser;
     }
@@ -82,15 +72,15 @@ public class UserClient implements Serializable {
     public void setPersonaIdUser(Persona personaIdUser) {
         this.personaIdUser = personaIdUser;
     }
-/*
-    public Strore getStroreIdStore() {
+
+    public Store getStroreIdStore() {
         return stroreIdStore;
     }
 
-    public void setStroreIdStore(Strore stroreIdStore) {
+    public void setStroreIdStore(Store stroreIdStore) {
         this.stroreIdStore = stroreIdStore;
     }
-*/
+
     @Override
     public int hashCode() {
         int hash = 0;

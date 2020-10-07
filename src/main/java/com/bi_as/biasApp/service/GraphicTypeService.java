@@ -1,7 +1,7 @@
 package com.bi_as.biasApp.service;
 
 import com.bi_as.biasApp.dao.GraphicTypeRepository;
-import com.bi_as.biasApp.domain.Graphictype;
+import com.bi_as.biasApp.domain.GraphicType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,8 +19,8 @@ public class GraphicTypeService {
 
 
 
-    public Graphictype getGraphicTypeByIdGraphicType(int idGraphicType){
-        Graphictype graphictype=graphicTypeRepository.findByIdGraphictype(idGraphicType);
+    public GraphicType getGraphicTypeByIdGraphicType(int idGraphicType){
+        GraphicType graphictype=graphicTypeRepository.findByIdGraphictype(idGraphicType);
         return graphictype;
     }
 }
