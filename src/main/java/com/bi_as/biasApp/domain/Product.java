@@ -20,7 +20,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "product")
-@NamedQueries({
+/*@NamedQueries({
         @NamedQuery(name = "Product.findAll", query = "SELECT p FROM Product p"),
         @NamedQuery(name = "Product.findByIdProduct", query = "SELECT p FROM Product p WHERE p.idProduct = :idProduct"),
         @NamedQuery(name = "Product.findByName", query = "SELECT p FROM Product p WHERE p.name = :name"),
@@ -28,7 +28,9 @@ import javax.persistence.Table;
         @NamedQuery(name = "Product.findByCost", query = "SELECT p FROM Product p WHERE p.cost = :cost"),
         @NamedQuery(name = "Product.findByCode", query = "SELECT p FROM Product p WHERE p.code = :code"),
         @NamedQuery(name = "Product.findByQuantity", query = "SELECT p FROM Product p WHERE p.quantity = :quantity"),
-        @NamedQuery(name = "Product.findByType", query = "SELECT p FROM Product p WHERE p.type = :type")})
+        @NamedQuery(name = "Product.findByType", query = "SELECT p FROM Product p WHERE p.type = :type"),
+        @NamedQuery(name = "Product.findByUrlImage", query = "SELECT p FROM Product p WHERE p.urlImage = :urlImage"),
+        @NamedQuery(name = "Product.findByNameImage", query = "SELECT p FROM Product p WHERE p.nameImage = :nameImage")})*/
 public class Product implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -54,6 +56,12 @@ public class Product implements Serializable {
     @Basic(optional = false)
     @Column(name = "type")
     private String type;
+    @Basic(optional = false)
+    @Column(name = "url_image")
+    private String urlImage;
+    @Basic(optional = false)
+    @Column(name = "name_image")
+    private String nameImage;
     @JoinColumn(name = "strore_id_store", referencedColumnName = "id_store")
     @ManyToOne(optional = false)
     private Store stroreIdStore;
@@ -67,7 +75,7 @@ public class Product implements Serializable {
         this.idProduct = idProduct;
     }
 
-    public Product(Integer idProduct, String name, String description, double cost, int code, int quantity, String type) {
+    public Product(Integer idProduct, String name, String description, double cost, int code, int quantity, String type, String urlImage, String nameImage) {
         this.idProduct = idProduct;
         this.name = name;
         this.description = description;
@@ -75,6 +83,8 @@ public class Product implements Serializable {
         this.code = code;
         this.quantity = quantity;
         this.type = type;
+        this.urlImage = urlImage;
+        this.nameImage = nameImage;
     }
 
     public Integer getIdProduct() {
@@ -133,6 +143,22 @@ public class Product implements Serializable {
         this.type = type;
     }
 
+    public String getUrlImage() {
+        return urlImage;
+    }
+
+    public void setUrlImage(String urlImage) {
+        this.urlImage = urlImage;
+    }
+
+    public String getNameImage() {
+        return nameImage;
+    }
+
+    public void setNameImage(String nameImage) {
+        this.nameImage = nameImage;
+    }
+
     public Store getStroreIdStore() {
         return stroreIdStore;
     }
@@ -171,7 +197,7 @@ public class Product implements Serializable {
 
     @Override
     public String toString() {
-        return "proyectokajoy.biasecommerce.Product[ idProduct=" + idProduct + " ]";
+        return "proyectokajoy.biascommerce2.Product[ idProduct=" + idProduct + " ]";
     }
 
 }

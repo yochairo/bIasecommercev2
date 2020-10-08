@@ -10,7 +10,6 @@ public class PersonaDto {
     private String lastName;
     private String secondLastName;
     private String mail;
-
     private String password;
 
     public PersonaDto(Persona persona) {

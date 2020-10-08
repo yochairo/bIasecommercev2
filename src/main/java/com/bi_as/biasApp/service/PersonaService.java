@@ -79,16 +79,29 @@ public class PersonaService {
         persona.setPassword(personaDto.getPassword());
         persona.setNicknameUser(personaDto.getNicknameUser());
         personaRepository.save(persona);
-        Persona persona1=personaRepository.findPersonabyNicknamePassword(personaDto.getNicknameUser(),personaDto.getPassword());
+//        Persona persona1=personaRepository.findPersonabyNicknamePassword(personaDto.getNicknameUser(),personaDto.getPassword());
         UserSeller userSeller=new UserSeller();
-        userSeller.setPersonaIdUser(persona1);
+        userSeller.setPersonaIdUser(persona);
         userSellerRepository.save(userSeller);
-        Store strore=stroreRepository.findLastStroreRegister();
-        userSeller.setStroreIdStore(strore);
+        Store store=stroreRepository.findLastStroreRegister();
+        userSeller.setStroreIdStore(store);
         userSellerRepository.save(userSeller);
         return userSeller;
     }
 
+
+    public int getLoginUserAdmin(PersonaDto personaDto){
+        Persona persona=personaRepository.findPersonabyNicknamePassword(personaDto.getNicknameUser(),personaDto.getPassword());
+        int number=0;
+        if(persona==null){
+            LOGGER.info("No existe el usuario");
+        }
+        else {
+            number=1;
+            LOGGER.info("Si existe el usuario");
+        }
+        return number;
+    }
     //-------------------------------------------------------------------------------------------
 
 }

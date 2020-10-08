@@ -29,8 +29,10 @@ import javax.persistence.Table;
         @NamedQuery(name = "Persona.findByLastName", query = "SELECT p FROM Persona p WHERE p.lastName = :lastName"),
         @NamedQuery(name = "Persona.findBySecondLastName", query = "SELECT p FROM Persona p WHERE p.secondLastName = :secondLastName"),
         @NamedQuery(name = "Persona.findByMail", query = "SELECT p FROM Persona p WHERE p.mail = :mail"),
-        @NamedQuery(name = "Persona.findByPassword", query = "SELECT p FROM Persona p WHERE p.password = :password")})*/
-public class Persona implements Serializable {
+        @NamedQuery(name = "Persona.findByPassword", query = "SELECT p FROM Persona p WHERE p.password = :password"),
+        @NamedQuery(name = "Persona.findByUrlImage", query = "SELECT p FROM Persona p WHERE p.urlImage = :urlImage"),
+        @NamedQuery(name = "Persona.findByNameImage", query = "SELECT p FROM Persona p WHERE p.nameImage = :nameImage")})
+*/public class Persona implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -59,6 +61,12 @@ public class Persona implements Serializable {
     @Basic(optional = false)
     @Column(name = "password")
     private String password;
+    @Basic(optional = false)
+    @Column(name = "url_image")
+    private String urlImage;
+    @Basic(optional = false)
+    @Column(name = "name_image")
+    private String nameImage;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "personaIdUser")
     private List<UserSeller> userSellerList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "personaIdUser")
@@ -75,7 +83,7 @@ public class Persona implements Serializable {
         this.idUser = idUser;
     }
 
-    public Persona(Integer idUser, String nicknameUser, String name, String secondName, String lastName, String secondLastName, String mail, String password) {
+    public Persona(Integer idUser, String nicknameUser, String name, String secondName, String lastName, String secondLastName, String mail, String password, String urlImage, String nameImage) {
         this.idUser = idUser;
         this.nicknameUser = nicknameUser;
         this.name = name;
@@ -84,6 +92,8 @@ public class Persona implements Serializable {
         this.secondLastName = secondLastName;
         this.mail = mail;
         this.password = password;
+        this.urlImage = urlImage;
+        this.nameImage = nameImage;
     }
 
     public Integer getIdUser() {
@@ -150,6 +160,22 @@ public class Persona implements Serializable {
         this.password = password;
     }
 
+    public String getUrlImage() {
+        return urlImage;
+    }
+
+    public void setUrlImage(String urlImage) {
+        this.urlImage = urlImage;
+    }
+
+    public String getNameImage() {
+        return nameImage;
+    }
+
+    public void setNameImage(String nameImage) {
+        this.nameImage = nameImage;
+    }
+
     public List<UserSeller> getUserSellerList() {
         return userSellerList;
     }
@@ -204,7 +230,7 @@ public class Persona implements Serializable {
 
     @Override
     public String toString() {
-        return "proyectokajoy.biasecommerce.Persona[ idUser=" + idUser + " ]";
+        return "proyectokajoy.biascommerce2.Persona[ idUser=" + idUser + " ]";
     }
 
 }

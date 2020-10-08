@@ -20,11 +20,13 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "store")
-@NamedQueries({
+/*@NamedQueries({
         @NamedQuery(name = "Store.findAll", query = "SELECT s FROM Store s"),
         @NamedQuery(name = "Store.findByIdStore", query = "SELECT s FROM Store s WHERE s.idStore = :idStore"),
         @NamedQuery(name = "Store.findByNameStore", query = "SELECT s FROM Store s WHERE s.nameStore = :nameStore"),
-        @NamedQuery(name = "Store.findByLocationStore", query = "SELECT s FROM Store s WHERE s.locationStore = :locationStore")})
+        @NamedQuery(name = "Store.findByLocationStore", query = "SELECT s FROM Store s WHERE s.locationStore = :locationStore"),
+        @NamedQuery(name = "Store.findByUrlImage", query = "SELECT s FROM Store s WHERE s.urlImage = :urlImage"),
+        @NamedQuery(name = "Store.findByNameImage", query = "SELECT s FROM Store s WHERE s.nameImage = :nameImage")})*/
 public class Store implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -38,6 +40,12 @@ public class Store implements Serializable {
     @Basic(optional = false)
     @Column(name = "location_store")
     private String locationStore;
+    @Basic(optional = false)
+    @Column(name = "url_image")
+    private String urlImage;
+    @Basic(optional = false)
+    @Column(name = "name_image")
+    private String nameImage;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "stroreIdStore")
     private List<Product> productList;
     @JoinColumn(name = "user_admin_id_useradmin", referencedColumnName = "id_useradmin")
@@ -55,10 +63,12 @@ public class Store implements Serializable {
         this.idStore = idStore;
     }
 
-    public Store(Integer idStore, String nameStore, String locationStore) {
+    public Store(Integer idStore, String nameStore, String locationStore, String urlImage, String nameImage) {
         this.idStore = idStore;
         this.nameStore = nameStore;
         this.locationStore = locationStore;
+        this.urlImage = urlImage;
+        this.nameImage = nameImage;
     }
 
     public Integer getIdStore() {
@@ -83,6 +93,22 @@ public class Store implements Serializable {
 
     public void setLocationStore(String locationStore) {
         this.locationStore = locationStore;
+    }
+
+    public String getUrlImage() {
+        return urlImage;
+    }
+
+    public void setUrlImage(String urlImage) {
+        this.urlImage = urlImage;
+    }
+
+    public String getNameImage() {
+        return nameImage;
+    }
+
+    public void setNameImage(String nameImage) {
+        this.nameImage = nameImage;
     }
 
     public List<Product> getProductList() {
@@ -139,7 +165,7 @@ public class Store implements Serializable {
 
     @Override
     public String toString() {
-        return "proyectokajoy.biasecommerce.Store[ idStore=" + idStore + " ]";
+        return "proyectokajoy.biascommerce2.Store[ idStore=" + idStore + " ]";
     }
 
 }

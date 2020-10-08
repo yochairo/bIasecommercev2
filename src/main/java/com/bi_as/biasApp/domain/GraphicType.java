@@ -23,12 +23,12 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "graphic_type")
-@NamedQueries({
+/*@NamedQueries({
         @NamedQuery(name = "GraphicType.findAll", query = "SELECT g FROM GraphicType g"),
         @NamedQuery(name = "GraphicType.findByIdGraphictype", query = "SELECT g FROM GraphicType g WHERE g.idGraphictype = :idGraphictype"),
         @NamedQuery(name = "GraphicType.findByName", query = "SELECT g FROM GraphicType g WHERE g.name = :name"),
         @NamedQuery(name = "GraphicType.findByActive", query = "SELECT g FROM GraphicType g WHERE g.active = :active")})
-public class GraphicType implements Serializable {
+*/public class GraphicType implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -37,7 +37,7 @@ public class GraphicType implements Serializable {
     private Integer idGraphictype;
     @Basic(optional = false)
     @Column(name = "name")
-    private int name;
+    private String name;
     @Basic(optional = false)
     @Column(name = "active")
     private int active;
@@ -51,7 +51,7 @@ public class GraphicType implements Serializable {
         this.idGraphictype = idGraphictype;
     }
 
-    public GraphicType(Integer idGraphictype, int name, int active) {
+    public GraphicType(Integer idGraphictype, String name, int active) {
         this.idGraphictype = idGraphictype;
         this.name = name;
         this.active = active;
@@ -65,11 +65,11 @@ public class GraphicType implements Serializable {
         this.idGraphictype = idGraphictype;
     }
 
-    public int getName() {
+    public String getName() {
         return name;
     }
 
-    public void setName(int name) {
+    public void setName(String name) {
         this.name = name;
     }
 
@@ -111,7 +111,7 @@ public class GraphicType implements Serializable {
 
     @Override
     public String toString() {
-        return "proyectokajoy.biasecommerce.GraphicType[ idGraphictype=" + idGraphictype + " ]";
+        return "proyectokajoy.biascommerce2.GraphicType[ idGraphictype=" + idGraphictype + " ]";
     }
 
 }

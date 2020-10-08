@@ -4,7 +4,7 @@ import com.bi_as.biasApp.domain.GraphicType;
 
 public class GraphictypeDto {
     private Integer idGraphictype;
-    private int name;
+    private String name;
     private int active;
 
     public GraphictypeDto(GraphicType graphictype) {
@@ -13,7 +13,7 @@ public class GraphictypeDto {
         this.active=graphictype.getActive();
     }
 
-    public GraphictypeDto(Integer idGraphictype, int name, int active) {
+    public GraphictypeDto(Integer idGraphictype, String name, int active) {
         this.idGraphictype = idGraphictype;
         this.name = name;
         this.active = active;
@@ -30,11 +30,11 @@ public class GraphictypeDto {
         this.idGraphictype = idGraphictype;
     }
 
-    public int getName() {
+    public String getName() {
         return name;
     }
 
-    public void setName(int name) {
+    public void setName(String name) {
         this.name = name;
     }
 
