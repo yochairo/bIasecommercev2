@@ -2,6 +2,7 @@ package com.bi_as.biasApp.service;
 
 import com.bi_as.biasApp.dao.ProductoRepository;
 import com.bi_as.biasApp.dao.StroreRepository;
+import com.bi_as.biasApp.domain.Persona;
 import com.bi_as.biasApp.domain.Product;
 import com.bi_as.biasApp.domain.Store;
 import com.bi_as.biasApp.dto.ProductoDto;
@@ -49,6 +50,18 @@ public class ProductService {
         ProductoDto productoDto1= new ProductoDto(product);
         return productoDto;
     }
+public ProductoDto ediproducto(ProductoDto productoDto){
 
+        Product product=productoRepository.findprodutbyidProduct(productoDto.getIdProduct());
+        product.setIdProduct(productoDto.getIdProduct());
+        product.setName(productoDto.getName());
+        product.setDescription(productoDto.getDescription());
+        product.setCost(productoDto.getCost());
+        product.setType(productoDto.getType());
+        product.setQuantity(productoDto.getQuantity());
+        product.setCode(productoDto.getCode());
+        productoRepository.save(product);
+        return productoDto;
+}
 
 }

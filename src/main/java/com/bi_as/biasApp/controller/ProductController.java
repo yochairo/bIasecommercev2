@@ -15,7 +15,7 @@ import javax.persistence.NamedStoredProcedureQueries;
 
 @CrossOrigin(origins = "http://localhost:4200",maxAge=3600)
 @RestController
-@RequestMapping("/k1/persona")
+@RequestMapping("/k1/producto")
 public class ProductController {
     private ProductService productService;
     private static final Logger LOGGER=LoggerFactory.getLogger(ProductController.class);
@@ -41,5 +41,15 @@ public class ProductController {
         int idtienda =Integer.parseInt(id);
        // LOGGER.info(productService.nuevoproducto(productoDto,idtienda).toString());
         return productService.nuevoproducto(productoDto,idtienda);
+    }
+
+
+    @PutMapping("/editproducto")
+    public ProductoDto editPublication(@RequestBody ProductoDto productoDto){
+        LOGGER.info("Realizando modificacion de editar user  esss "+productoDto.getIdProduct());
+
+
+        return productService.ediproducto(productoDto);
+
     }
 }
