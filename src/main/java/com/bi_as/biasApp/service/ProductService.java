@@ -7,6 +7,7 @@ import com.bi_as.biasApp.domain.Store;
 import com.bi_as.biasApp.dto.ProductoDto;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -15,19 +16,23 @@ public class ProductService {
     StroreRepository stroreRepository;
     private static final Logger LOGGER= LoggerFactory.getLogger(ProductService.class);
 
+    @Autowired
     public ProductService(ProductoRepository productoRepository, StroreRepository stroreRepository) {
         this.productoRepository = productoRepository;
         this.stroreRepository = stroreRepository;
     }
 
-    public Product findbyidproduct(int id ){
+    public Product findidproduct(int id ){
         return productoRepository.findprodutbyidProduct(id);
 
     }
 
-    public Product nuevoproducto(ProductoDto productoDto,int idtienda){
+    public ProductoDto nuevoproducto(ProductoDto productoDto,int idtienda){
+        Store tienda = new Store();
+        tienda=stroreRepository.findstoreidstore(idtienda);
 
         Product product= new Product();
+        product.setIdProduct(productoDto.getIdProduct());
         product.setName(productoDto.getName());
         product.setDescription(productoDto.getDescription());
         product.setCost(productoDto.getCost());
@@ -36,11 +41,14 @@ public class ProductService {
         product.setType(productoDto.getType());
         product.setUrlImage("urlimagenproducto");
         product.setNameImage("produtoimagen.jpg");
-        Store store= new Store();
-        store=stroreRepository.findstoreidstore(idtienda);
-        product.setStroreIdStore(store);
+        //Store store= new Store();
+        //store=stroreRepository.findstoreidstore(idtienda);
+        //System.out.println(store);
+        product.setStroreIdStore(tienda);
         productoRepository.save(product);
-        return product;
+        ProductoDto productoDto1= new ProductoDto(product);
+        return productoDto;
     }
+
 
 }
