@@ -11,7 +11,8 @@ public class PersonaDto {
     private String secondLastName;
     private String mail;
     private String password;
-
+public PersonaDto(){
+}
     public PersonaDto(Persona persona) {
         this.idUser=persona.getIdUser();
         this.nicknameUser = persona.getNicknameUser();
