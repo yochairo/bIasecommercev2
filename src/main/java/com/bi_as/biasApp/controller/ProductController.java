@@ -34,6 +34,13 @@ public class ProductController {
         return  productoDto;
     }
 
+    @RequestMapping("/idtienda/{name}")
+    public ProductoDto encotraproductonombre(@PathVariable("name")String id){
+        LOGGER.info("Obteniendo id graphic");
+        ProductoDto productoDto=new ProductoDto(productService.findidproductname(id));
+        return  productoDto;
+    }
+
 
     @PostMapping("/idtienda/{id}")
     public ProductoDto addproduct(@PathVariable("id")String id,@RequestBody ProductoDto productoDto){

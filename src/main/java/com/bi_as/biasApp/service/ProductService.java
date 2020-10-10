@@ -27,6 +27,10 @@ public class ProductService {
         return productoRepository.findprodutbyidProduct(id);
 
     }
+    public Product findidproductname(String name ){
+        return productoRepository.findprodutbyidname(name);
+
+    }
 
     public ProductoDto nuevoproducto(ProductoDto productoDto,int idtienda){
         Store tienda = new Store();
