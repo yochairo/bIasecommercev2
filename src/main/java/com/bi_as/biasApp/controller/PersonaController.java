@@ -41,6 +41,15 @@ public class PersonaController {
     }
 
 
+    @PostMapping("/addUserSeller")
+    public PersonaDto addUserSeller(@RequestBody PersonaDto personaDto){
+//        UserDto userDto=new UserDto(userService.verifyUser(user));
+//        LOGGER.info("Obteniendo id "+personaDto.getNicknameUser()+"    "+ personaDto.getPassword());
+        return personaService.saveUserSeller(personaDto);
+
+    }
+
+
 
 
 
