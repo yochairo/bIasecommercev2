@@ -70,23 +70,31 @@ public class PersonaService {
         return userAdmin;
     }
 
-    public UserSeller saveUserSeller(PersonaDto personaDto){
+    public PersonaDto saveUserSeller(PersonaDto personaDto){
         Persona persona=new Persona();
+        persona.setNicknameUser(personaDto.getNicknameUser());
         persona.setName(personaDto.getName());
         persona.setSecondName(personaDto.getSecondName());
         persona.setLastName(personaDto.getLastName());
+        persona.setSecondLastName(personaDto.getSecondLastName());
+        LOGGER.info("Second last name "+personaDto.getSecondLastName());
         persona.setMail(personaDto.getMail());
         persona.setPassword(personaDto.getPassword());
-        persona.setNicknameUser(personaDto.getNicknameUser());
+        persona.setUrlImage("urlsellerimage1");
+        persona.setNameImage("Imageseller1");
         personaRepository.save(persona);
-//        Persona persona1=personaRepository.findPersonabyNicknamePassword(personaDto.getNicknameUser(),personaDto.getPassword());
+        Persona persona1=personaRepository.findPersonabyNicknamePassword(personaDto.getNicknameUser(),personaDto.getPassword());
+
+//        UserAdmin userAdmin=userAdminRepository.finduseradmin(1);
+//        LOGGER.info("User admin existente "+userAdmin);
+        Store store=stroreRepository.findstoreidstore(1);
+        LOGGER.info("El nombre de la tienda es "+store.getNameImage());
         UserSeller userSeller=new UserSeller();
-        userSeller.setPersonaIdUser(persona);
-        userSellerRepository.save(userSeller);
-        Store store=stroreRepository.findLastStroreRegister();
+        userSeller.setPersonaIdUser(persona1);
         userSeller.setStroreIdStore(store);
         userSellerRepository.save(userSeller);
-        return userSeller;
+        LOGGER.info("Guardado con exito");
+        return personaDto;
     }
 
 
