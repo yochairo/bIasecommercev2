@@ -5,11 +5,16 @@ import com.bi_as.biasApp.dao.StroreRepository;
 import com.bi_as.biasApp.domain.Persona;
 import com.bi_as.biasApp.domain.Product;
 import com.bi_as.biasApp.domain.Store;
+import com.bi_as.biasApp.domain.UserSeller;
+import com.bi_as.biasApp.dto.PersonaDto;
 import com.bi_as.biasApp.dto.ProductoDto;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class ProductService {
@@ -54,7 +59,7 @@ public class ProductService {
         ProductoDto productoDto1= new ProductoDto(product);
         return productoDto;
     }
-public ProductoDto ediproducto(ProductoDto productoDto){
+    public ProductoDto ediproducto(ProductoDto productoDto){
 
         Product product=productoRepository.findprodutbyidProduct(productoDto.getIdProduct());
         product.setIdProduct(productoDto.getIdProduct());
@@ -66,6 +71,15 @@ public ProductoDto ediproducto(ProductoDto productoDto){
         product.setCode(productoDto.getCode());
         productoRepository.save(product);
         return productoDto;
-}
+    }
+
+    public List<ProductoDto> getlistproduct(){
+        List<Product> productList = productoRepository.findproduclist();
+        List<ProductoDto> productoDtos=new ArrayList<>();
+        for(Product product:productList){
+            productoDtos.add(new ProductoDto(product));
+        }
+        return  productoDtos;
+    }
 
 }

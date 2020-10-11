@@ -12,6 +12,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.persistence.NamedStoredProcedureQueries;
+import java.util.List;
 
 @CrossOrigin(origins = "http://localhost:4200",maxAge=3600)
 @RestController
@@ -58,5 +59,11 @@ public class ProductController {
 
         return productService.ediproducto(productoDto);
 
+    }
+
+    @RequestMapping("/productlist")
+    public List<ProductoDto> getUserNicknameAndPassword(){
+        LOGGER.info("Obteniendo id graphic");
+        return productService.getlistproduct();
     }
 }
