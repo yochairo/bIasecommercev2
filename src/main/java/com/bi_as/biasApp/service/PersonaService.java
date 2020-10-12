@@ -110,6 +110,21 @@ public class PersonaService {
         }
         return number;
     }
+
+    public PersonaDto editUserSeller(PersonaDto personaDto) {
+        Persona persona=personaRepository.findPersonabyidUser(personaDto.getIdUser());
+        persona.setNicknameUser(personaDto.getNicknameUser());
+        persona.setName(personaDto.getName());
+        persona.setSecondName(personaDto.getSecondName());
+        persona.setLastName(personaDto.getLastName());
+        persona.setSecondLastName(personaDto.getSecondLastName());
+        persona.setMail(personaDto.getMail());
+        persona.setPassword(personaDto.getPassword());
+        persona.setUrlImage("urlsellerimage1");
+        persona.setNameImage("Imageseller1");
+        personaRepository.save(persona);
+        return  personaDto;
+    }
     //-------------------------------------------------------------------------------------------
 
 }

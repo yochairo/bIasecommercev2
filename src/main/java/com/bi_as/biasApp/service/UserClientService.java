@@ -1,9 +1,16 @@
 package com.bi_as.biasApp.service;
 
+import com.bi_as.biasApp.controller.userClientControler;
+import com.bi_as.biasApp.dao.PersonaRepository;
+import com.bi_as.biasApp.dao.StroreRepository;
 import com.bi_as.biasApp.dao.UserClientRepository;
 import com.bi_as.biasApp.domain.Persona;
+import com.bi_as.biasApp.domain.Store;
 import com.bi_as.biasApp.domain.UserClient;
+import com.bi_as.biasApp.domain.UserSeller;
 import com.bi_as.biasApp.dto.PersonaDto;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,11 +19,16 @@ import java.util.List;
 
 @Service
 public class UserClientService {
+    PersonaRepository personaRepository;
     UserClientRepository userClientRepository;
+    StroreRepository stroreRepository;
+    private static final Logger LOGGER = LoggerFactory.getLogger(UserClientService.class);
 
     @Autowired
-    public UserClientService(UserClientRepository userClientRepository) {
+    public UserClientService(UserClientRepository userClientRepository,PersonaRepository personaRepository,StroreRepository stroreRepository) {
         this.userClientRepository = userClientRepository;
+        this.personaRepository=personaRepository;
+        this.stroreRepository=stroreRepository;
     }
     public List<PersonaDto> getlistclient(){
         List<UserClient> userClientList =userClientRepository.findclientlist();
@@ -25,5 +37,59 @@ public class UserClientService {
                 personaDtoList.add(new PersonaDto(userClient.getPersonaIdUser()));
             }
         return  personaDtoList;
+    }
+
+    public PersonaDto addUserClient(PersonaDto personaDto) {
+        Persona persona=new Persona();
+        persona.setNicknameUser(personaDto.getNicknameUser());
+        persona.setName(personaDto.getName());
+        persona.setSecondName(personaDto.getSecondName());
+        persona.setLastName(personaDto.getLastName());
+        persona.setSecondLastName(personaDto.getSecondLastName());
+        LOGGER.info("Second last name "+personaDto.getSecondLastName());
+        persona.setMail(personaDto.getMail());
+        persona.setPassword(personaDto.getPassword());
+        persona.setUrlImage("urlsellerimage1");
+        persona.setNameImage("Imageseller1");
+        personaRepository.save(persona);
+        Persona persona1=personaRepository.findPersonabyNicknamePassword(personaDto.getNicknameUser(),personaDto.getPassword());
+        Store store=stroreRepository.findstoreidstore(1);
+        LOGGER.info("El nombre de la tienda es "+store.getNameImage());
+        UserClient userClient=new UserClient();
+        userClient.setPersonaIdUser(persona1);
+        userClient.setStroreIdStore(store);
+        userClientRepository.save(userClient);
+        LOGGER.info("Guardado con exito");
+        return personaDto;
+    }
+
+
+    public int getLoginUserClient(PersonaDto personaDto) {
+        Persona persona=personaRepository.findPersonabyNicknamePassword(personaDto.getNicknameUser(),personaDto.getPassword());
+        int number=0;
+        if(persona==null){
+            LOGGER.info("No existe el usuario");
+        }
+        else {
+            number=1;
+            LOGGER.info("Si existe el usuario");
+        }
+        return number;
+    }
+
+    public PersonaDto editUserClient(PersonaDto personaDto) {
+        Persona persona=personaRepository.findPersonabyidUser(personaDto.getIdUser());
+        persona.setNicknameUser(personaDto.getNicknameUser());
+        persona.setName(personaDto.getName());
+        persona.setSecondName(personaDto.getSecondName());
+        persona.setLastName(personaDto.getLastName());
+        persona.setSecondLastName(personaDto.getSecondLastName());
+        persona.setMail(personaDto.getMail());
+        persona.setPassword(personaDto.getPassword());
+        persona.setUrlImage("urlsellerimage1");
+        persona.setNameImage("Imageseller1");
+        personaRepository.save(persona);
+        return  personaDto;
+
     }
 }

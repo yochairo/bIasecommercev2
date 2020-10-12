@@ -2,7 +2,6 @@ package com.bi_as.biasApp.controller;
 
 import com.bi_as.biasApp.domain.User;
 import com.bi_as.biasApp.dto.PersonaDto;
-import com.bi_as.biasApp.dto.UserDto;
 import com.bi_as.biasApp.service.PersonaService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -48,6 +47,16 @@ public class PersonaController {
         return personaService.saveUserSeller(personaDto);
 
     }
+
+
+    @PutMapping("/editUserSeller")
+    public PersonaDto editPublication(@RequestBody PersonaDto personaDto){
+//        LOGGER.info("Realizando modificacion de editar user  esss "+productoDto.getIdProduct());
+        return personaService.editUserSeller(personaDto);
+
+    }
+
+
 
 
 

@@ -7,10 +7,7 @@ import com.bi_as.biasApp.service.UserClientService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -33,4 +30,29 @@ public class userClientControler {
         LOGGER.info("Obteniendo id graphic");
         return userClientService.getlistclient();
     }
+
+    @PostMapping("/addUserClient")
+    public PersonaDto addUserSeller(@RequestBody PersonaDto personaDto){
+//        UserDto userDto=new UserDto(userService.verifyUser(user));
+//        LOGGER.info("Obteniendo id "+personaDto.getNicknameUser()+"    "+ personaDto.getPassword());
+        return userClientService.addUserClient(personaDto);
+
+    }
+
+    @PostMapping("/loginuserClient")
+    public int loginUserClient(@RequestBody PersonaDto personaDto){
+//        UserDto userDto=new UserDto(userService.verifyUser(user));
+        LOGGER.info("Obteniendo id "+personaDto.getNicknameUser()+"    "+ personaDto.getPassword());
+        return userClientService.getLoginUserClient(personaDto);
+
+    }
+
+    @PutMapping("/editUserClient")
+    public PersonaDto editPublication(@RequestBody PersonaDto personaDto){
+        return userClientService.editUserClient(personaDto);
+
+    }
+
+
+
 }

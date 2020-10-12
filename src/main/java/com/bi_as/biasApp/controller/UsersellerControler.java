@@ -6,9 +6,7 @@ import com.bi_as.biasApp.service.UserSellerService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -19,11 +17,11 @@ public class UsersellerControler {
     UserSellerService userSellerService;
     private static final Logger LOGGER = LoggerFactory.getLogger(UsersellerControler.class);
 
+    @Autowired
     public UsersellerControler(UserSellerService userSellerService) {
         this.userSellerService = userSellerService;
     }
 
-    @Autowired
 
 
 
@@ -32,4 +30,15 @@ public class UsersellerControler {
         LOGGER.info("Obteniendo id graphic");
         return userSellerService.getlistclient();
     }
+
+
+
+    @PostMapping("/loginuserSeller")
+    public int loginUserClient(@RequestBody PersonaDto personaDto){
+//        UserDto userDto=new UserDto(userService.verifyUser(user));
+        LOGGER.info("Obteniendo id "+personaDto.getNicknameUser()+"    "+ personaDto.getPassword());
+        return userSellerService.getLoginUserSeller(personaDto);
+
+    }
+
 }
