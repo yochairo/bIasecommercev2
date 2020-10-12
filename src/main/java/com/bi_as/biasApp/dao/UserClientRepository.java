@@ -11,6 +11,6 @@ public interface UserClientRepository extends JpaRepository<UserClient, Integer>
 
     @Query(value = "select * from user_client where id_store=?1",nativeQuery = true)
     UserAdmin findcliente(int idstore);
-    @Query(value = "select * from user_client ",nativeQuery = true)
+    @Query(value = "select * from user_client where active=1",nativeQuery = true)
     List<UserClient> findclientlist();
 }

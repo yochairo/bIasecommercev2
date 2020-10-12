@@ -33,6 +33,9 @@ public class UserSeller implements Serializable {
     @Basic(optional = false)
     @Column(name = "id_userseller")
     private Integer idUserseller;
+    @Basic(optional = false)
+    @Column(name = "active")
+    private int active;
     @JoinColumn(name = "persona_id_user", referencedColumnName = "id_user")
     @ManyToOne(optional = false)
     private Persona personaIdUser;
@@ -55,6 +58,14 @@ public class UserSeller implements Serializable {
 
     public void setIdUserseller(Integer idUserseller) {
         this.idUserseller = idUserseller;
+    }
+
+    public int getActive() {
+        return active;
+    }
+
+    public void setActive(int active) {
+        this.active = active;
     }
 
     public Persona getPersonaIdUser() {

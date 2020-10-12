@@ -51,6 +51,7 @@ public class UserClientService {
         persona.setPassword(personaDto.getPassword());
         persona.setUrlImage("urlsellerimage1");
         persona.setNameImage("Imageseller1");
+        persona.setActive(1);
         personaRepository.save(persona);
         Persona persona1=personaRepository.findPersonabyNicknamePassword(personaDto.getNicknameUser(),personaDto.getPassword());
         Store store=stroreRepository.findstoreidstore(1);
@@ -58,6 +59,7 @@ public class UserClientService {
         UserClient userClient=new UserClient();
         userClient.setPersonaIdUser(persona1);
         userClient.setStroreIdStore(store);
+        userClient.setActive(1);
         userClientRepository.save(userClient);
         LOGGER.info("Guardado con exito");
         return personaDto;

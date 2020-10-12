@@ -33,6 +33,9 @@ public class UserClient implements Serializable {
     @Basic(optional = false)
     @Column(name = "id_userclient")
     private Integer idUserclient;
+    @Basic(optional = false)
+    @Column(name = "active")
+    private int active;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "userClientIdUserclient")
     private List<Compra> compraList;
     @JoinColumn(name = "persona_id_user", referencedColumnName = "id_user")
@@ -56,6 +59,15 @@ public class UserClient implements Serializable {
     public void setIdUserclient(Integer idUserclient) {
         this.idUserclient = idUserclient;
     }
+
+    public int getActive() {
+        return active;
+    }
+
+    public void setActive(int active) {
+        this.active = active;
+    }
+
 
     public List<Compra> getCompraList() {
         return compraList;

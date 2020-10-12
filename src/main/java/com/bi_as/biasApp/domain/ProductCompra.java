@@ -1,15 +1,7 @@
 package com.bi_as.biasApp.domain;
 
 import java.io.Serializable;
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 /**
  *
@@ -24,9 +16,13 @@ public class ProductCompra implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "id_userproduct")
     private Integer idUserproduct;
+    @Basic(optional = false)
+    @Column(name = "active")
+    private int active;
     @JoinColumn(name = "compra_id_compra", referencedColumnName = "id_compra")
     @ManyToOne(optional = false)
     private Compra compraIdCompra;
@@ -47,6 +43,14 @@ public class ProductCompra implements Serializable {
 
     public void setIdUserproduct(Integer idUserproduct) {
         this.idUserproduct = idUserproduct;
+    }
+
+    public int getActive() {
+        return active;
+    }
+
+    public void setActive(int active) {
+        this.active = active;
     }
 
     public Compra getCompraIdCompra() {

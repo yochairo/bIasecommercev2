@@ -2,17 +2,7 @@ package com.bi_as.biasApp.domain;
 
 import java.io.Serializable;
 import java.util.List;
-import javax.persistence.Basic;
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 /**
  *
@@ -31,6 +21,7 @@ public class Store implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "id_store")
     private Integer idStore;
@@ -46,6 +37,9 @@ public class Store implements Serializable {
     @Basic(optional = false)
     @Column(name = "name_image")
     private String nameImage;
+    @Basic(optional = false)
+    @Column(name = "active")
+    private int active;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "stroreIdStore")
     private List<Product> productList;
     @JoinColumn(name = "user_admin_id_useradmin", referencedColumnName = "id_useradmin")
@@ -110,6 +104,15 @@ public class Store implements Serializable {
     public void setNameImage(String nameImage) {
         this.nameImage = nameImage;
     }
+
+    public int getActive() {
+        return active;
+    }
+
+    public void setActive(int active) {
+        this.active = active;
+    }
+
 
     public List<Product> getProductList() {
         return productList;

@@ -19,7 +19,7 @@ public interface UserSellerRepository extends JpaRepository<UserSeller, Integer>
     @Query(value = "select * from user_seller where id_userseller=?1",nativeQuery = true)
     UserSeller findUserSeller(int var1);
 
-    @Query(value = "select * from user_seller",nativeQuery = true)
+    @Query(value = "select * from user_seller where active=1",nativeQuery = true)
     List<UserSeller> findselerlist();
 
 }

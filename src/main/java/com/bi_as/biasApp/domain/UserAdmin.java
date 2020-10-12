@@ -35,6 +35,9 @@ public class UserAdmin implements Serializable {
     @Basic(optional = false)
     @Column(name = "id_useradmin")
     private Integer idUseradmin;
+    @Basic(optional = false)
+    @Column(name = "active")
+    private int active;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "userAdminIdUseradmin")
     private List<Store> storeList;
     @JoinColumn(name = "persona_id_user", referencedColumnName = "id_user")
@@ -55,6 +58,15 @@ public class UserAdmin implements Serializable {
     public void setIdUseradmin(Integer idUseradmin) {
         this.idUseradmin = idUseradmin;
     }
+
+    public int getActive() {
+        return active;
+    }
+
+    public void setActive(int active) {
+        this.active = active;
+    }
+
 
     public List<Store> getStoreList() {
         return storeList;

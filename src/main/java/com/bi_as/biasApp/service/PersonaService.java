@@ -58,6 +58,7 @@ public class PersonaService {
         persona.setMail(personaDto.getMail());
         persona.setPassword(personaDto.getPassword());
         persona.setNicknameUser(personaDto.getNicknameUser());
+        persona.setActive(1);
         personaRepository.save(persona);
         Persona persona1=personaRepository.findPersonabyNicknamePassword(personaDto.getNicknameUser(),personaDto.getPassword());
         UserAdmin userAdmin=new UserAdmin();
@@ -82,6 +83,7 @@ public class PersonaService {
         persona.setPassword(personaDto.getPassword());
         persona.setUrlImage("urlsellerimage1");
         persona.setNameImage("Imageseller1");
+        persona.setActive(1);
         personaRepository.save(persona);
         Persona persona1=personaRepository.findPersonabyNicknamePassword(personaDto.getNicknameUser(),personaDto.getPassword());
 
@@ -92,6 +94,7 @@ public class PersonaService {
         UserSeller userSeller=new UserSeller();
         userSeller.setPersonaIdUser(persona1);
         userSeller.setStroreIdStore(store);
+        userSeller.setActive(1);
         userSellerRepository.save(userSeller);
         LOGGER.info("Guardado con exito");
         return personaDto;

@@ -2,17 +2,7 @@ package com.bi_as.biasApp.domain;
 
 import java.io.Serializable;
 import java.util.List;
-import javax.persistence.Basic;
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 /**
  *
@@ -35,6 +25,7 @@ public class Product implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "id_product")
     private Integer idProduct;
@@ -62,6 +53,9 @@ public class Product implements Serializable {
     @Basic(optional = false)
     @Column(name = "name_image")
     private String nameImage;
+    @Basic(optional = false)
+    @Column(name = "active")
+    private int active;
     @JoinColumn(name = "strore_id_store", referencedColumnName = "id_store")
     @ManyToOne(optional = false)
     private Store stroreIdStore;
@@ -157,6 +151,14 @@ public class Product implements Serializable {
 
     public void setNameImage(String nameImage) {
         this.nameImage = nameImage;
+    }
+
+    public int getActive() {
+        return active;
+    }
+
+    public void setActive(int active) {
+        this.active = active;
     }
 
     public Store getStroreIdStore() {

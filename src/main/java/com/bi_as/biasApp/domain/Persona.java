@@ -67,6 +67,9 @@ import javax.persistence.Table;
     @Basic(optional = false)
     @Column(name = "name_image")
     private String nameImage;
+    @Basic(optional = false)
+    @Column(name = "active")
+    private int active;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "personaIdUser")
     private List<UserSeller> userSellerList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "personaIdUser")
@@ -174,6 +177,14 @@ import javax.persistence.Table;
 
     public void setNameImage(String nameImage) {
         this.nameImage = nameImage;
+    }
+
+    public int getActive() {
+        return active;
+    }
+
+    public void setActive(int active) {
+        this.active = active;
     }
 
     public List<UserSeller> getUserSellerList() {

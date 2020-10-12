@@ -51,6 +51,7 @@ public class ProductService {
         product.setType(productoDto.getType());
         product.setUrlImage("urlimagenproducto");
         product.setNameImage("produtoimagen.jpg");
+        product.setActive(1);
         //Store store= new Store();
         //store=stroreRepository.findstoreidstore(idtienda);
         //System.out.println(store);

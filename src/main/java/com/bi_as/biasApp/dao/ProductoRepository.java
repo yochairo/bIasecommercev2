@@ -15,7 +15,7 @@ public interface ProductoRepository extends JpaRepository<Product,Integer> {
     @Query(value = "select * from  product where name=?1",nativeQuery = true)
     Product findprodutbyidname(String var1);
 
-    @Query(value = "select * from product",nativeQuery = true)
+    @Query(value = "select * from product where active=1",nativeQuery = true)
     List<Product> findproduclist();
 
 

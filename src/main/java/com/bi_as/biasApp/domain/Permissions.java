@@ -2,15 +2,7 @@ package com.bi_as.biasApp.domain;
 
 import java.io.Serializable;
 import java.util.List;
-import javax.persistence.Basic;
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 /**
  *
@@ -26,12 +18,16 @@ public class Permissions implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "permissions")
     private Integer permissions;
     @Basic(optional = false)
     @Column(name = "permission_name")
     private String permissionName;
+    @Basic(optional = false)
+    @Column(name = "active")
+    private int active;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "permissionsPermissions")
     private List<PermissionUserSeller> permissionUserSellerList;
 
@@ -61,6 +57,14 @@ public class Permissions implements Serializable {
 
     public void setPermissionName(String permissionName) {
         this.permissionName = permissionName;
+    }
+
+    public int getActive() {
+        return active;
+    }
+
+    public void setActive(int active) {
+        this.active = active;
     }
 
     public List<PermissionUserSeller> getPermissionUserSellerList() {

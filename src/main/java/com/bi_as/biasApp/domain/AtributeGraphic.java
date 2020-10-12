@@ -30,6 +30,9 @@ public class AtributeGraphic implements Serializable {
     @Basic(optional = false)
     @Column(name = "id_atribute_graphic")
     private Integer idAtributeGraphic;
+    @Basic(optional = false)
+    @Column(name = "active")
+    private int active;
     @JoinColumn(name = "atribute_id_atribute", referencedColumnName = "id_atribute")
     @ManyToOne(optional = false)
     private Atribute atributeIdAtribute;
@@ -66,6 +69,14 @@ public class AtributeGraphic implements Serializable {
 
     public void setGraphicIdGraphic(Graphic graphicIdGraphic) {
         this.graphicIdGraphic = graphicIdGraphic;
+    }
+
+    public int getActive() {
+        return active;
+    }
+
+    public void setActive(int active) {
+        this.active = active;
     }
 
     @Override
