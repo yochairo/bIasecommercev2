@@ -14,8 +14,9 @@ import org.slf4j.LoggerFactory;
 import javax.persistence.NamedStoredProcedureQueries;
 import java.util.List;
 
-@CrossOrigin(origins = "http://localhost:4200",maxAge=3600)
+//@CrossOrigin(origins = "http://localhost:4200",maxAge=3600)
 @RestController
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RequestMapping("/k1/producto")
 public class ProductController {
     private ProductService productService;
