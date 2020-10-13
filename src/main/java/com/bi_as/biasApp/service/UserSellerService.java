@@ -53,4 +53,34 @@ public class UserSellerService {
         return number;
     }
 
+
+    public String deleteUserSeller(PersonaDto personaDto) {
+
+        String statua=" ";
+
+        try {
+            Persona persona=personaRepository.findPersonabyidUser(personaDto.getIdUser());
+
+            UserSeller userSeller=new UserSeller();
+            userSeller=userSellerRepository.findusersellerbyidpersona(persona);
+            Persona persona1=userSeller.getPersonaIdUser();
+
+            if(persona1.getIdUser() == persona.getIdUser()){
+                persona.setActive(0);
+                personaRepository.save(persona);
+                userSeller.setActive(0);
+                userSellerRepository.save(userSeller);
+                statua="se elimino al verdedor";
+            }
+
+        }catch (Exception e){
+            statua="no es un vendedor";
+        }
+
+        return statua;
+
+    }
+
+
+
 }

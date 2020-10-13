@@ -42,7 +42,7 @@ public class ProductService {
         tienda=stroreRepository.findstoreidstore(idtienda);
 
         Product product= new Product();
-        product.setIdProduct(productoDto.getIdProduct());
+        //product.setIdProduct(productoDto.getIdProduct());
         product.setName(productoDto.getName());
         product.setDescription(productoDto.getDescription());
         product.setCost(productoDto.getCost());
@@ -63,7 +63,7 @@ public class ProductService {
     public ProductoDto ediproducto(ProductoDto productoDto){
 
         Product product=productoRepository.findprodutbyidProduct(productoDto.getIdProduct());
-        product.setIdProduct(productoDto.getIdProduct());
+        //product.setIdProduct(productoDto.getIdProduct());
         product.setName(productoDto.getName());
         product.setDescription(productoDto.getDescription());
         product.setCost(productoDto.getCost());
@@ -81,6 +81,18 @@ public class ProductService {
             productoDtos.add(new ProductoDto(product));
         }
         return  productoDtos;
+    }
+
+
+    public String deleteproduct(ProductoDto productoDto) {
+
+        Product product=productoRepository.findprodutbyidProduct(productoDto.getIdProduct());
+        product.setActive(0);
+        productoRepository.save(product);
+        String statua="se elimino el producto";
+
+        return statua;
+
     }
 
 }

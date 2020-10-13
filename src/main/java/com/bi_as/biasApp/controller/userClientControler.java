@@ -53,6 +53,12 @@ public class userClientControler {
         return userClientService.editUserClient(personaDto);
 
     }
+    @PutMapping("/deleteUserClient")
+    public String delitpersonacliente(@RequestBody PersonaDto personaDto){
+
+        return userClientService.deleteUserClient(personaDto);
+
+    }
 
 
 

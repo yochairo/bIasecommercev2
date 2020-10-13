@@ -4,11 +4,9 @@ import com.bi_as.biasApp.controller.userClientControler;
 import com.bi_as.biasApp.dao.PersonaRepository;
 import com.bi_as.biasApp.dao.StroreRepository;
 import com.bi_as.biasApp.dao.UserClientRepository;
-import com.bi_as.biasApp.domain.Persona;
-import com.bi_as.biasApp.domain.Store;
-import com.bi_as.biasApp.domain.UserClient;
-import com.bi_as.biasApp.domain.UserSeller;
+import com.bi_as.biasApp.domain.*;
 import com.bi_as.biasApp.dto.PersonaDto;
+import org.omg.PortableInterceptor.USER_EXCEPTION;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -92,6 +90,39 @@ public class UserClientService {
         persona.setNameImage("Imageseller1");
         personaRepository.save(persona);
         return  personaDto;
+
+    }
+
+    public String deleteUserClient(PersonaDto personaDto) {
+
+        String statua="no es cliente ";
+
+       /* UserAdmin userClient = new UserAdmin();
+        userClient=userClientRepository.findcliente(personaDto.getIdUser());
+        System.out.println();
+        System.out.println(userClient);
+        System.out.println();
+        */
+
+
+        try {
+            Persona persona=personaRepository.findPersonabyidUser(personaDto.getIdUser());
+
+            UserClient userClient=new UserClient();
+            userClient=userClientRepository.finduserclient(persona);
+            Persona persona1=userClient.getPersonaIdUser();
+            if(persona1.getIdUser() == persona.getIdUser()){
+                persona.setActive(0);
+                personaRepository.save(persona);
+                userClient.setActive(0);
+                userClientRepository.save(userClient);
+                statua="se elimino al cliente";
+            }
+        }catch (Exception e){
+            statua="no es un cliente";
+        }
+
+        return statua;
 
     }
 }

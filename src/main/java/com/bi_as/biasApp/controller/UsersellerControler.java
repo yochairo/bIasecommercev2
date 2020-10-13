@@ -42,4 +42,12 @@ public class UsersellerControler {
 
     }
 
+    @PutMapping("/deletesellerClient")
+    public String delitpersonacliente(@RequestBody PersonaDto personaDto){
+
+        return userSellerService.deleteUserSeller(personaDto);
+
+    }
+
+
 }

@@ -61,6 +61,15 @@ public class ProductController {
         return productService.ediproducto(productoDto);
 
     }
+//
+    @PutMapping("/deleteproducto")
+    public String delitPublication(@RequestBody ProductoDto productoDto){
+        LOGGER.info("Realizando modificacion de editar user  esss "+productoDto.getIdProduct());
+
+
+        return productService.deleteproduct(productoDto);
+
+    }
 
     @RequestMapping("/productlist")
     public List<ProductoDto> getUserNicknameAndPassword(){
