@@ -33,7 +33,7 @@ public class PersonaController {
 
 
     @PostMapping("/login")
-    public int loginPersona(@RequestBody PersonaDto personaDto){
+    public PersonaDto loginPersona(@RequestBody PersonaDto personaDto){
 //        UserDto userDto=new UserDto(userService.verifyUser(user));
         LOGGER.info("Obteniendo id "+personaDto.getNicknameUser()+"    "+ personaDto.getPassword());
         return personaService.getLoginUserAdmin(personaDto);

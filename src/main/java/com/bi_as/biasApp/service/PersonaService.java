@@ -101,17 +101,21 @@ public class PersonaService {
     }
 
 
-    public int getLoginUserAdmin(PersonaDto personaDto){
+    public PersonaDto getLoginUserAdmin(PersonaDto personaDto){
         Persona persona=personaRepository.findPersonabyNicknamePassword(personaDto.getNicknameUser(),personaDto.getPassword());
+        PersonaDto personaDto1=new PersonaDto();
         int number=0;
+
         if(persona==null){
+
             LOGGER.info("No existe el usuario");
         }
         else {
             number=1;
+            personaDto1=new PersonaDto(persona);
             LOGGER.info("Si existe el usuario");
         }
-        return number;
+        return personaDto1;
     }
 
     public PersonaDto editUserSeller(PersonaDto personaDto) {
