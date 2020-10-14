@@ -11,9 +11,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-@CrossOrigin(origins = "http://localhost:4200",maxAge = 3600)
+//@CrossOrigin(origins = "http://localhost:4200",maxAge = 3600)
 @RestController
 @RequestMapping("/k1/atributeGraphic")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
+
 public class AtributeGraphicController {
 
     AtributeGraphicService atributeGraphicService;

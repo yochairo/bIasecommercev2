@@ -12,9 +12,10 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
-@CrossOrigin(origins = "http://localhost:4200",maxAge = 3600)
+//@CrossOrigin(origins = "http://localhost:4200",maxAge = 3600)
 @RestController
 @RequestMapping("/k1/graphic")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class GraphicController {
 
     GraphicService graphicService;
