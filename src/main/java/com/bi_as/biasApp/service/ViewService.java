@@ -63,7 +63,11 @@ public class ViewService {
         List<ViewDto> viewDtoList=new ArrayList<>();
         Dashboard dashboard=dashboardService.getDashboardByIdDashboard(idDashboard);
         for(View view:dashboard.getViewList()){
-            viewDtoList.add(new ViewDto(view));
+
+            if(view.getActive()==1){
+
+                viewDtoList.add(new ViewDto(view));
+            }
         }
         return viewDtoList;
     }
