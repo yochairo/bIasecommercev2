@@ -64,17 +64,19 @@ public class UserClientService {
     }
 
 
-    public int getLoginUserClient(PersonaDto personaDto) {
+    public PersonaDto getLoginUserClient(PersonaDto personaDto) {
         Persona persona=personaRepository.findPersonabyNicknamePassword(personaDto.getNicknameUser(),personaDto.getPassword());
+        PersonaDto personaDto1=new PersonaDto();
         int number=0;
         if(persona==null){
             LOGGER.info("No existe el usuario");
         }
         else {
             number=1;
+            personaDto1=new PersonaDto(persona);
             LOGGER.info("Si existe el usuario");
         }
-        return number;
+        return personaDto1;
     }
 
     public PersonaDto editUserClient(PersonaDto personaDto) {

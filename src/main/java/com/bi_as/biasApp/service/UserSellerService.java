@@ -40,17 +40,19 @@ public class UserSellerService {
     }
 
 
-    public int getLoginUserSeller(PersonaDto personaDto) {
+    public PersonaDto getLoginUserSeller(PersonaDto personaDto) {
         Persona persona=personaRepository.findPersonabyNicknamePassword(personaDto.getNicknameUser(),personaDto.getPassword());
         int number=0;
+        PersonaDto personaDto1=new PersonaDto();
         if(persona==null){
             LOGGER.info("No existe el usuario");
         }
         else {
+            personaDto1=new PersonaDto(persona);
             number=1;
             LOGGER.info("Si existe el usuario");
         }
-        return number;
+        return personaDto1;
     }
 
 

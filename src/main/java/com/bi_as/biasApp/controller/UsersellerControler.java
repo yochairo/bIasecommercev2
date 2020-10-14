@@ -35,7 +35,7 @@ public class UsersellerControler {
 
 
     @PostMapping("/loginuserSeller")
-    public int loginUserClient(@RequestBody PersonaDto personaDto){
+    public PersonaDto loginUserClient(@RequestBody PersonaDto personaDto){
 //        UserDto userDto=new UserDto(userService.verifyUser(user));
         LOGGER.info("Obteniendo id "+personaDto.getNicknameUser()+"    "+ personaDto.getPassword());
         return userSellerService.getLoginUserSeller(personaDto);
