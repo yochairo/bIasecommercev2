@@ -134,4 +134,13 @@ public class PersonaService {
     }
     //-------------------------------------------------------------------------------------------
 
+    public PersonaDto findbynick(String nick){
+        PersonaDto personaDto= new PersonaDto();
+        if(personaRepository.findPersonabyNickname(nick) != null){
+            personaDto=new PersonaDto(personaRepository.findPersonabyNickname(nick));
+        }
+
+        return  personaDto;
+    }
+
 }

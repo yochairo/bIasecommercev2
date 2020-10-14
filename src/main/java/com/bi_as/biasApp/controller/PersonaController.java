@@ -40,6 +40,12 @@ public class PersonaController {
 
     }
 
+//findbynick
+
+    @RequestMapping("/usernick/{nick}")
+    public PersonaDto getUserNickname(@PathVariable("nick")String nick){
+        return  personaService.findbynick(nick);
+    }
 
     @PostMapping("/addUserSeller")
     public PersonaDto addUserSeller(@RequestBody PersonaDto personaDto){

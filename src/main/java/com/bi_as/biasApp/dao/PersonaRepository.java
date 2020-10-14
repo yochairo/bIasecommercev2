@@ -17,6 +17,9 @@ public interface PersonaRepository extends JpaRepository<Persona,Integer> {
     @Query(value = "select * from  persona where nickname_user=?1 and password=?2",nativeQuery = true)
     Persona findPersonabyNicknamePassword(String nickname,String password);
 
+    @Query(value = "select * from  persona where nickname_user=?1 ",nativeQuery = true)
+    Persona findPersonabyNickname(String nickname);
+
     @Query(value = "select * from  persona",nativeQuery = true)
     List<Persona> findPersonalist();
 
