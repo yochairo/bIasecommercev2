@@ -51,10 +51,29 @@ public class DashboardService {
     public String deleteDashboard(DashboardDto dashboardDto) {
         //   Persona user=userService.getUserByid(dashboardDto.getIdUser());
         Dashboard dashboard=dashboardRepository.findByIdDashboard(dashboardDto.getIdDashboard());
+
+        System.out.println();
+        System.out.println(dashboard);
+        System.out.println();
+
         dashboard.setActive(0);
 //        dashboard.setUserIdUser(user);
         dashboardRepository.save(dashboard);
         return "se elimino el dash";
+    }
+
+    public String editDashboard(DashboardDto dashboardDto) {
+        //   Persona user=userService.getUserByid(dashboardDto.getIdUser());
+        Dashboard dashboard=dashboardRepository.findByIdDashboard(dashboardDto.getIdDashboard());
+
+        System.out.println();
+        System.out.println(dashboard);
+        System.out.println();
+
+        dashboard.setName(dashboardDto.getName());
+//        dashboard.setUserIdUser(user);
+        dashboardRepository.save(dashboard);
+        return "se edito el dash";
     }
     public Dashboard getDashboardByIdDashboard(int idDashboard){
         Dashboard dashboard=dashboardRepository.findByIdDashboard(idDashboard);

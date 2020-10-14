@@ -63,4 +63,10 @@ public class DashboardController {
 
     }
 
+    @PutMapping("/editdash")
+    public String editdashbord(@RequestBody DashboardDto dashboard){
+        return dashboardService.editDashboard(dashboard);
+
+    }
+
 }
