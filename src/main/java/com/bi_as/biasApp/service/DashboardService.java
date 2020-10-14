@@ -90,7 +90,9 @@ public class DashboardService {
         //User user=userService.getUserByid(idUser);
         Persona persona=personaService.findPersonaId(idUser);
         for(Dashboard dashboard:persona.getDashboardList()){
-            dashboardDtoList.add(new DashboardDto(dashboard));
+            if(dashboard.getActive()==1){
+                dashboardDtoList.add(new DashboardDto(dashboard));
+            }
         }
         return dashboardDtoList;
     }
