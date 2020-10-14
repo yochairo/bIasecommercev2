@@ -42,11 +42,11 @@ public class DashboardController {
     @RequestMapping(/*value =*/"/userdash/{id}"/*,method = RequestMethod.GET,
       produces = MediaType.APPLICATION_JSON_VALUE*/)
     public List<DashboardDto> getAllDashboardsByIdUser(@PathVariable("id") Integer idUser){
-        return dashboardService.findDashboardListByUserIdWithDashboardDtoParameter(idUser);
+        return dashboardService.findDashboardListByUserId(idUser);
     }
 
-    @PostMapping("/add/")
-    public Dashboard addView(@RequestBody DashboardDto dashboard){
+    @PostMapping("/adddashbord")
+    public DashboardDto addView(@RequestBody DashboardDto dashboard){
         LOGGER.info("Agregando usuario");
         return dashboardService.addDashboard(dashboard);
     }

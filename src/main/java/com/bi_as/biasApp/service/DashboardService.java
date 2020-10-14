@@ -16,11 +16,13 @@ import java.util.List;
 public class DashboardService {
     DashboardRepository dashboardRepository;
     UserService userService;
+    PersonaService personaService;
 
     @Autowired
-    public DashboardService(DashboardRepository dashboardRepository,UserService userService) {
+    public DashboardService(DashboardRepository dashboardRepository,UserService userService,PersonaService personaService) {
         this.dashboardRepository = dashboardRepository;
         this.userService=userService;
+        this.personaService=personaService;
     }
 
     public List<DashboardDto> findAllDashboard(){
@@ -31,17 +33,18 @@ public class DashboardService {
         return dashboardDtoList;
     }
 
-    public Dashboard addDashboard(DashboardDto dashboardDto) {
-     //   Persona user=userService.getUserByid(dashboardDto.getIdUser());
+    public DashboardDto addDashboard(DashboardDto dashboardDto) {
+       Persona user=personaService.findPersonaId(dashboardDto.getIdUser());
         Dashboard dashboard=new Dashboard();
-        dashboard.setIdDashboar(dashboardDto.getIdDashboard());
+        //dashboard.setIdDashboar(dashboardDto.getIdDashboard());
         dashboard.setName(dashboardDto.getName());
+        dashboard.setActive(dashboardDto.getActive());
         dashboard.setTxUser(dashboardDto.getTxUser());
         dashboard.setTxHost(dashboardDto.getTxHost());
         dashboard.setTxDate(dashboardDto.getTxDate());
-//        dashboard.setUserIdUser(user);
+        dashboard.setUserIdUser(user);
         dashboardRepository.save(dashboard);
-        return dashboard;
+        return dashboardDto;
     }
 
 
@@ -58,15 +61,16 @@ public class DashboardService {
         return dashboard;
     }
 
-    public List<DashboardDto> findDashboardListByUserIdWithDashboardDtoParameter(int idUser){
+    /*public List<DashboardDto> findDashboardListByUserIdWithDashboardDtoParameter(int idUser){
 
         return findDashboardListByUserId(idUser);
-    }
+    }*/
 
     public List<DashboardDto> findDashboardListByUserId(int idUser){
         List<DashboardDto> dashboardDtoList=new ArrayList<>();
-        User user=userService.getUserByid(idUser);
-        for(Dashboard dashboard:user.getDashboardList()){
+        //User user=userService.getUserByid(idUser);
+        Persona persona=personaService.findPersonaId(idUser);
+        for(Dashboard dashboard:persona.getDashboardList()){
             dashboardDtoList.add(new DashboardDto(dashboard));
         }
         return dashboardDtoList;

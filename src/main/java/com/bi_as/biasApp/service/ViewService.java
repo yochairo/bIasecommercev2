@@ -31,8 +31,8 @@ public class ViewService {
         return viewDtoList;
     }
 
-/*
-    public View addView(ViewDto viewDto){
+
+    public ViewDto addView(ViewDto viewDto){
         View view=new View();
         Dashboard dashboard=dashboardService.getDashboardByIdDashboard(viewDto.getIdDashboard());
         view.setIdView(viewDto.getIdView());
@@ -41,12 +41,11 @@ public class ViewService {
         view.setTxUser(viewDto.getTxUser());
         view.setTxDate(viewDto.getTxDate());
         view.setTxHost(viewDto.getTxHost());
-        view.setDashboardiddashboard(dashboard);
-//        view.se
+        view.setDashboardIdDashboar(dashboard);
         viewRepository.save(view);
-        return view;
+        return viewDto;
     }
-*/
+
     public View getViewByidView(int idView){
 //        View view= viewRepository.findByName("MiVista1c");
         View view= viewRepository.findByIdView(idView);
@@ -67,5 +66,14 @@ public class ViewService {
             viewDtoList.add(new ViewDto(view));
         }
         return viewDtoList;
+    }
+
+    public String deleteview(ViewDto viewDto) {
+        //   Persona user=userService.getUserByid(dashboardDto.getIdUser());
+        View view=viewRepository.findByIdView(viewDto.getIdView());
+        view.setActive(0);
+//        dashboard.setUserIdUser(user);
+        viewRepository.save(view);
+        return "se elimino el dash";
     }
 }

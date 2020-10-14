@@ -13,7 +13,13 @@ public interface DashboardRepository extends JpaRepository<Dashboard,Integer> {
     Dashboard findByActive(boolean isActive);
 
     List<Dashboard> findByUserIdUser(User idUser);
-    @Query(value = "select * from dashboard where id_dashboard=?1 LIMIT 1",nativeQuery = true)
+
+    @Query(value = "select * from dashboard where id_dashboar=?1 LIMIT 1",nativeQuery = true)
     Dashboard findByIdDashboard(int idDashboard);
+
+    @Query(value = "select * from dashboard where user_id_user=?1 ",nativeQuery = true)
+    List<Dashboard> getDashboardlist(int idDashboard);
+
+
 
 }

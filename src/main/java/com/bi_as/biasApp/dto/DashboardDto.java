@@ -12,7 +12,7 @@ public class DashboardDto {
     private String txDate;
     private int active;
     private int idUser;
-    private List<ViewDto> viewList;
+    //private List<ViewDto> viewList;
 
     public DashboardDto(Dashboard dashboard) {
         this.idDashboard=dashboard.getIdDashboar();
@@ -93,14 +93,14 @@ public class DashboardDto {
         this.idUser = idUser;
     }
 
-    public List<ViewDto> getViewList() {
+    /*public List<ViewDto> getViewList() {
         return viewList;
     }
 
     public void setViewList(List<ViewDto> viewList) {
         this.viewList = viewList;
     }
-
+*/
     @Override
     public String toString() {
         return "DashboardDto{" +

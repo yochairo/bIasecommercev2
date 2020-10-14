@@ -45,11 +45,17 @@ public class ViewController {
 //        return viewService.findViewByIdDashboard(1);
     }
 
-    @PostMapping("/add/")
-    public View addView(@RequestBody ViewDto view){
+    @PostMapping("/addview")
+    public ViewDto addView(@RequestBody ViewDto view){
         LOGGER.info("Agregando usuario");
-//        return viewService.addView(view);
-        return  null;
+        return viewService.addView(view);
+        //return  null;
+    }
+
+    @PutMapping("/deleteview")
+    public String deletedashbord(@RequestBody ViewDto viewDto){
+        return viewService.deleteview(viewDto);
+
     }
 /*
     @RequestMapping("/{id}")
