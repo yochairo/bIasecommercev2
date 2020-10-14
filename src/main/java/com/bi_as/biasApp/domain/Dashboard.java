@@ -5,6 +5,8 @@
  */
 package com.bi_as.biasApp.domain;
 
+import com.bi_as.biasApp.dto.DashboardDto;
+
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Basic;
@@ -71,13 +73,13 @@ public class Dashboard implements Serializable {
         this.idDashboar = idDashboar;
     }
 
-    public Dashboard(Integer idDashboar, String name, String txUser, String txHost, String txDate, int active) {
-        this.idDashboar = idDashboar;
-        this.name = name;
-        this.txUser = txUser;
-        this.txHost = txHost;
-        this.txDate = txDate;
-        this.active = active;
+    public Dashboard(DashboardDto dashboardDto) {
+        this.idDashboar = dashboardDto.getIdDashboard();
+        this.name = dashboardDto.getName();
+        this.txUser = dashboardDto.getTxUser();
+        this.txHost = dashboardDto.getTxHost();
+        this.txDate = dashboardDto.getTxDate();
+        this.active = dashboardDto.getActive();
     }
 
     public Integer getIdDashboar() {

@@ -44,6 +44,15 @@ public class DashboardService {
         return dashboard;
     }
 
+
+    public String deleteDashboard(DashboardDto dashboardDto) {
+        //   Persona user=userService.getUserByid(dashboardDto.getIdUser());
+        Dashboard dashboard=new Dashboard(dashboardDto);
+        dashboard.setActive(0);
+//        dashboard.setUserIdUser(user);
+        dashboardRepository.save(dashboard);
+        return "se elimino el dash";
+    }
     public Dashboard getDashboardByIdDashboard(int idDashboard){
         Dashboard dashboard=dashboardRepository.findByIdDashboard(idDashboard);
         return dashboard;

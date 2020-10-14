@@ -3,6 +3,7 @@ package com.bi_as.biasApp.controller;
 import com.bi_as.biasApp.domain.Dashboard;
 import com.bi_as.biasApp.domain.User;
 import com.bi_as.biasApp.dto.DashboardDto;
+import com.bi_as.biasApp.dto.ProductoDto;
 import com.bi_as.biasApp.dto.UserDto;
 import com.bi_as.biasApp.service.DashboardService;
 import org.slf4j.Logger;
@@ -54,6 +55,11 @@ public class DashboardController {
     public DashboardDto getDashboardByIdDash(@PathVariable("id") Integer idDashboard){
         LOGGER.info("Agregando usuario");
         return new DashboardDto(dashboardService.getDashboardByIdDashboard(idDashboard));
+    }
+    @PutMapping("/deletedash")
+    public String deletedashbord(@RequestBody DashboardDto dashboard){
+        return dashboardService.deleteDashboard(dashboard);
+
     }
 
 }
