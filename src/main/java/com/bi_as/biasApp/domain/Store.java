@@ -40,6 +40,9 @@ public class Store implements Serializable {
     @Basic(optional = false)
     @Column(name = "active")
     private int active;
+    @Basic(optional = false)
+    @Column(name = "telefono")
+    private String telefono;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "stroreIdStore")
     private List<Product> productList;
     @JoinColumn(name = "user_admin_id_useradmin", referencedColumnName = "id_useradmin")
@@ -111,6 +114,14 @@ public class Store implements Serializable {
 
     public void setActive(int active) {
         this.active = active;
+    }
+
+    public String getTelefono() {
+        return telefono;
+    }
+
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
     }
 
 

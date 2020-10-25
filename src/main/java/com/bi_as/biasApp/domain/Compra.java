@@ -32,6 +32,9 @@ public class Compra implements Serializable {
     @Basic(optional = false)
     @Column(name = "active")
     private int active;
+    @Basic(optional = false)
+    @Column(name = "Estado")
+    private int estado;
     @JoinColumn(name = "user_client_id_userclient", referencedColumnName = "id_userclient")
     @ManyToOne(optional = false)
     private UserClient userClientIdUserclient;
@@ -81,6 +84,14 @@ public class Compra implements Serializable {
 
     public void setActive(int active) {
         this.active = active;
+    }
+
+    public int getEstado() {
+        return estado;
+    }
+
+    public void setEstado(int estado) {
+        this.estado = estado;
     }
 
     public UserClient getUserClientIdUserclient() {
