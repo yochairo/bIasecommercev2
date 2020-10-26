@@ -12,7 +12,10 @@ import java.util.List;
 public interface UserClientRepository extends JpaRepository<UserClient, Integer> {
 
     @Query(value = "select * from  user_client where persona_id_user=?1",nativeQuery = true)
-    UserClient finduserclient(Persona id);
+    UserClient finduserclient(Persona persona);
+
+    @Query(value = "select * from  user_client where id_userclient=?1",nativeQuery = true)
+    UserClient finduserbyidclient(int id);
 
     @Query(value = "select * from user_client where active=1",nativeQuery = true)
     List<UserClient> findclientlist();
