@@ -82,7 +82,7 @@ public class ProductService {
         //product.setDescription(productoDto.getDescription());
         //product.setCost(productoDto.getCost());
        // product.setType(productoDto.getType());
-        product.setQuantity(cant);
+        product.setQuantity(product.getQuantity()+cant);
        // product.setCode(productoDto.getCode());
         productoRepository.save(product);
         ProductoDto productoDto = new ProductoDto(product);
